@@ -21,7 +21,7 @@ namespace dae
 
 		void Update() override;
 
-		SDL_Texture* GetSDLTexture() const;
+		SDL_Texture* GetSDLTexture() const { return m_Texture; };
 		explicit Texture2D(SDL_Texture* texture);
 
 	private:

@@ -8,17 +8,18 @@ namespace dae
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
+		~Scene();
+
+		Scene(const Scene& other) = delete;
+		Scene(Scene&& other) = delete;
+		Scene& operator=(const Scene& other) = delete;
+		Scene& operator=(Scene&& other) = delete;
+
 		void Add(const std::shared_ptr<SceneObject>& object);
 
 		void FixedUpdate();
 		void Update();
 		void Render() const;
-
-		~Scene();
-		Scene(const Scene& other) = delete;
-		Scene(Scene&& other) = delete;
-		Scene& operator=(const Scene& other) = delete;
-		Scene& operator=(Scene&& other) = delete;
 
 	private:
 		explicit Scene(const std::string& name);
