@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+/Minigin/.vs/Minigin/v17/ipch/7938dbdecab6825d.ipch
+/Minigin/.vs/Minigin/v17/Browse.VC.opendb
