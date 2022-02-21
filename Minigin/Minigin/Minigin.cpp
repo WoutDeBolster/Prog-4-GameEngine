@@ -6,10 +6,13 @@
 #include "Renderer.h"
 #include "ResourceManager.h"
 #include "TextObject.h"
-#include "GameObject.h"
+#include "GameObject.h"	
 #include "Scene.h"
 
+#include <chrono>
+
 using namespace std;
+using namespace std::chrono;
 
 void PrintSDLVersion()
 {
@@ -27,8 +30,8 @@ void PrintSDLVersion()
 void dae::Minigin::Initialize()
 {
 	PrintSDLVersion();
-	
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
+
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
@@ -41,7 +44,7 @@ void dae::Minigin::Initialize()
 		480,
 		SDL_WINDOW_OPENGL
 	);
-	if (m_Window == nullptr) 
+	if (m_Window == nullptr)
 	{
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
 	}
@@ -89,6 +92,9 @@ void dae::Minigin::Run()
 	LoadGame();
 
 	{
+		auto lastTime = high_resolution_clock::now();
+		float lag = 0;
+
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
@@ -97,9 +103,22 @@ void dae::Minigin::Run()
 		bool doContinue = true;
 		while (doContinue)
 		{
+			const auto currentTime = high_resolution_clock::now();
+			float deltaTime = duration<float>(currentTime - lastTime).count();
+			lastTime = currentTime;
+			lag += deltaTime;
+
 			doContinue = input.ProcessInput();
-			sceneManager.Update();
+			while (lag >= MsPerFrame)
+			{
+				sceneManager.Update();
+				lag -= MsPerFrame;
+			}
 			renderer.Render();
+
+
+			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+			this_thread::sleep_for(sleepTime);
 		}
 	}
 
