@@ -1,17 +1,4 @@
-﻿  MiniginPCH.cpp
-  Font.cpp
-  GameObject.cpp
-  InputManager.cpp
-  Main.cpp
-  Minigin.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  Transform.cpp
-  Generating Code...
+﻿  Minigin.cpp
   Minigin.vcxproj -> D:\Github\Prog-4-GameEngine\Minigin\x64\Debug\Minigin.exe
   D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied

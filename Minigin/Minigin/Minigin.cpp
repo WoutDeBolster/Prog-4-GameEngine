@@ -111,6 +111,7 @@ void dae::Minigin::Run()
 			doContinue = input.ProcessInput();
 			while (lag >= MsPerFrame)
 			{
+				sceneManager.FixedUpdate();
 				sceneManager.Update();
 				lag -= MsPerFrame;
 			}
