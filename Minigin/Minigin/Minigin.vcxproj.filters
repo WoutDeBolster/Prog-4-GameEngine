@@ -63,6 +63,9 @@
     <ClInclude Include="TextObject.h">
       <Filter>Compontents</Filter>
     </ClInclude>
+    <ClInclude Include="FPSComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -105,6 +108,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextObject.cpp">
+      <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>

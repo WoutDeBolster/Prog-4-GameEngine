@@ -1,4 +1,8 @@
-﻿  Minigin.cpp
+﻿  Font.cpp
+  ResourceManager.cpp
+  TextObject.cpp
+  Transform.cpp
+  Generating Code...
   Minigin.vcxproj -> D:\Github\Prog-4-GameEngine\Minigin\x64\Debug\Minigin.exe
   D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied

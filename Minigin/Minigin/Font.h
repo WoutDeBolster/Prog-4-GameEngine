@@ -18,7 +18,9 @@ namespace dae
 		Font& operator= (const Font&) = delete;
 		Font& operator= (const Font&&) = delete;
 
-		_TTF_Font* GetFont() const;
+		void Update() override;
+
+		_TTF_Font* GetFont() const { return m_Font; };
 		explicit Font(const std::string& fullPath, unsigned int size);
 
 	private:

@@ -7,8 +7,8 @@ dae::Font::~Font()
 	TTF_CloseFont(m_Font);
 }
 
-TTF_Font* dae::Font::GetFont() const {
-	return m_Font;
+void dae::Font::Update()
+{
 }
 
 dae::Font::Font(const std::string& fullPath, unsigned int size) : m_Font(nullptr), m_Size(size)
