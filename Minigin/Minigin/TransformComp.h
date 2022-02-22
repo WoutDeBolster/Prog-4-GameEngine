@@ -14,7 +14,7 @@ namespace dae
 		TransformComp& operator= (const TransformComp&) = delete;
 		TransformComp& operator= (const TransformComp&&) = delete;
 
-		void Update(float) override;
+		void Update(float deltaTime) override;
 
 		const glm::vec3& GetPosition() const;
 		void SetPosition(float x, float y, float z);

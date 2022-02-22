@@ -16,8 +16,8 @@ namespace dae
 		TextureComp& operator= (const TextureComp&) = delete;
 		TextureComp& operator= (const TextureComp&&) = delete;
 
-		void Update(float) override;
-		void Render() override;
+		void Update(float deltaTime) override;
+		virtual void Render() const override;
 
 		void SetTexture(const std::string& filename);
 

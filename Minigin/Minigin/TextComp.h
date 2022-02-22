@@ -17,8 +17,8 @@ namespace dae
 		TextComp& operator=(const TextComp& other) = delete;
 		TextComp& operator=(TextComp&& other) = delete;
 
-		void Update(float) override;
-		void Render() const;
+		void Update(float deltaTime) override;
+		virtual void Render() const override;
 
 		void SetText(const std::string& text);
 

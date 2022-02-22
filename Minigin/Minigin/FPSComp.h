@@ -3,7 +3,6 @@
 namespace dae
 {
 
-	class TextComp;
 	class FPSComp final : public BaseComponent
 	{
 	public:
@@ -21,8 +20,6 @@ namespace dae
 
 	private:
 		int m_FPS;
-		int m_Frames;
-		float m_Time;
 	};
 }
 

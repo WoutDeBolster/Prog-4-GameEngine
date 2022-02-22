@@ -5,7 +5,7 @@ void dae::BaseComponent::FixedUpdate(float)
 {
 }
 
-void dae::BaseComponent::Render()
+void dae::BaseComponent::Render() const
 {
 }
 

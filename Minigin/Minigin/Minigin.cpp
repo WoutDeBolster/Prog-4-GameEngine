@@ -61,30 +61,43 @@ void dae::Minigin::LoadGame() const
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	//ResourceManager::GetInstance().LoadTexture("background.jpg")
-	std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>("background.jpg");
-	auto go = std::make_shared<GameObject>();
-	textureBackground->setGameObject(go);
-	go->addComponent(textureBackground);
-	scene.Add(go);
+	////ResourceManager::GetInstance().LoadTexture("background.jpg")
+	//std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>("background.jpg");
+	//auto go = std::make_shared<GameObject>();
+	//textureBackground->setGameObject(go);
+	//go->addComponent(textureBackground);
+	//scene.Add(go);
 
-	//ResourceManager::GetInstance().LoadTexture("logo.png")
-	std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>("logo.png");
+	////ResourceManager::GetInstance().LoadTexture("logo.png")
+	//std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>("logo.png");
 
-	go = std::make_shared<GameObject>();
-	textureLogo->setGameObject(go);
-	go->addComponent(textureLogo);
-	go->SetPosition(216, 180);
-	scene.Add(go);
+	//go = std::make_shared<GameObject>();
+	//textureLogo->setGameObject(go);
+	//go->addComponent(textureLogo);
+	//go->SetPosition(216, 180);
+	//scene.Add(go);
 
-	std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", font);
+	//std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	//std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", font);
 
-	auto to = std::make_shared<GameObject>();
-	text->setGameObject(to);
-	to->SetPosition(80, 20);
-	to->addComponent(text);
-	scene.Add(to);
+	//auto to = std::make_shared<GameObject>();
+	//text->setGameObject(to);
+	//to->SetPosition(80, 20);
+	//to->addComponent(text);
+	//scene.Add(to);
+
+	// FPSComp
+	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
+	std::shared_ptr<Font> font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 32);
+	std::shared_ptr<TextComp> text2 = std::make_shared<TextComp>(std::to_string(FPS->GetFPS()), font2);
+
+	auto FPSCompCounter = std::make_shared<GameObject>();
+	FPS->setGameObject(FPSCompCounter);
+	text2->setGameObject(FPSCompCounter);
+	FPSCompCounter->SetPosition(80, 20);
+	FPSCompCounter->addComponent(FPS);
+	FPSCompCounter->addComponent(text2);
+	scene.Add(FPSCompCounter);
 }
 
 void dae::Minigin::Cleanup()
@@ -120,23 +133,11 @@ void dae::Minigin::Run()
 			lastTime = currentTime;
 			lag += deltaTime;
 
-			// FPSComp
-			std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
-			std::shared_ptr<Font> font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 32);
-			std::shared_ptr<TextComp> text2 = std::make_shared<TextComp>(std::to_string(FPS->GetFPS()), font2);
-
-			auto FPSCompCounter = std::make_shared<GameObject>();
-			FPS->setGameObject(FPSCompCounter);
-			text2->setGameObject(FPSCompCounter);
-			FPSCompCounter->SetPosition(80, 20);
-			FPSCompCounter->addComponent(FPS);
-			FPSCompCounter->addComponent(text2);
-
 			doContinue = input.ProcessInput();
-			while (lag >= MsPerFrame)
+			sceneManager.Update(deltaTime);
+			while (lag >= static_cast<float>(MsPerFrame / 1000.f))
 			{
 				sceneManager.FixedUpdate(deltaTime);
-				sceneManager.Update(deltaTime);
 				lag -= MsPerFrame;
 			}
 			renderer.Render();

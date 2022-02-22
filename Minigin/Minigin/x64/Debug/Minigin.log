@@ -1,9 +1,4 @@
-﻿  GameObject.cpp
-  Minigin.cpp
-  Scene.cpp
-  TextComp.cpp
-  TextureComp.cpp
-  Generating Code...
+﻿  FPSComp.cpp
   Minigin.vcxproj -> D:\Github\Prog-4-GameEngine\Minigin\x64\Debug\Minigin.exe
   D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied

@@ -8,9 +8,9 @@ namespace dae
 	public:
 		virtual ~BaseComponent() = default;
 
-		virtual void Update(float) = 0;
-		virtual void FixedUpdate(float);
-		virtual void Render();
+		virtual void Update(float deltaTime) = 0;
+		virtual void FixedUpdate(float deltaTime);
+		virtual void Render() const;
 
 		void setGameObject(std::shared_ptr<GameObject> gameObject);
 
