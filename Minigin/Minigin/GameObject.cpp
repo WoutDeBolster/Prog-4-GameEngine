@@ -42,3 +42,8 @@ void dae::GameObject::SetPosition(float x, float y)
 {
 	m_Transform.SetPosition(x, y, 0.0f);
 }
+
+glm::vec3 dae::GameObject::GetPosition() const
+{
+	return m_Transform.GetPosition();
+}

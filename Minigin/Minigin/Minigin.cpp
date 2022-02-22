@@ -77,21 +77,14 @@ void dae::Minigin::LoadGame() const
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
-	std::shared_ptr<Font> Font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", Font);
+	std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", font);
 
 	auto to = std::make_shared<GameObject>();
 	text->setGameObject(to);
 	to->SetPosition(80, 20);
 	to->addComponent(text);
 	scene.Add(to);
-
-	// FPSComp
-	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
-
-	auto FPSCompCounter = std::make_shared<GameObject>();
-	FPS->setGameObject(FPSCompCounter);
-	FPSCompCounter->addComponent(FPS);
 }
 
 void dae::Minigin::Cleanup()
@@ -126,6 +119,18 @@ void dae::Minigin::Run()
 			float deltaTime = duration<float>(currentTime - lastTime).count();
 			lastTime = currentTime;
 			lag += deltaTime;
+
+			// FPSComp
+			std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
+			std::shared_ptr<Font> font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 32);
+			std::shared_ptr<TextComp> text2 = std::make_shared<TextComp>(std::to_string(FPS->GetFPS()), font2);
+
+			auto FPSCompCounter = std::make_shared<GameObject>();
+			FPS->setGameObject(FPSCompCounter);
+			text2->setGameObject(FPSCompCounter);
+			FPSCompCounter->SetPosition(80, 20);
+			FPSCompCounter->addComponent(FPS);
+			FPSCompCounter->addComponent(text2);
 
 			doContinue = input.ProcessInput();
 			while (lag >= MsPerFrame)

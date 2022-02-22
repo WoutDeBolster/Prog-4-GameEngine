@@ -20,6 +20,7 @@ namespace dae
 		void Render() const;
 
 		void SetPosition(float x, float y);
+		glm::vec3 GetPosition() const;
 
 		// components
 		void addComponent(std::shared_ptr<BaseComponent> myComponent);

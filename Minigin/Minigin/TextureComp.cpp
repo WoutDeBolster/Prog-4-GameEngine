@@ -2,6 +2,8 @@
 #include "TextureComp.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
+#include "GameObject.h"
+#include "Texture2D.h"
 
 dae::TextureComp::TextureComp(const std::string& filename)
 {
@@ -14,7 +16,7 @@ void dae::TextureComp::Update(float)
 
 void dae::TextureComp::Render()
 {
-	const auto& pos = m_Transform.GetPosition();
+	const auto& pos = m_GameObject.lock().get()->GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
 }
 
