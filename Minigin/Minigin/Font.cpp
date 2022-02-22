@@ -7,7 +7,7 @@ dae::Font::~Font()
 	TTF_CloseFont(m_Font);
 }
 
-void dae::Font::Update()
+void dae::Font::Update(float DeltaTime)
 {
 }
 

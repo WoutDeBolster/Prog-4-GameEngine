@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "Transform.h"
 
-void dae::Transform::Update()
+void dae::Transform::Update(float DeltaTime)
 {
 
 }

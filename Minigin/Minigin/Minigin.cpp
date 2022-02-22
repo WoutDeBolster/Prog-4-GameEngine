@@ -8,6 +8,8 @@
 #include "TextObject.h"
 #include "GameObject.h"	
 #include "Scene.h"
+#include "FPS.h"
+#include "TextureComp.h"
 
 #include <chrono>
 
@@ -59,12 +61,14 @@ void dae::Minigin::LoadGame() const
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	std::shared_ptr<Texture2D> textureBackground = ResourceManager::GetInstance().LoadTexture("background.jpg");
+	//ResourceManager::GetInstance().LoadTexture("background.jpg")
+	std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>("background.jpg");
 	auto go = std::make_shared<GameObject>();
 	go->addComponent(textureBackground);
 	scene.Add(go);
 
-	std::shared_ptr<Texture2D> textureLogo = ResourceManager::GetInstance().LoadTexture("logo.png");
+	//ResourceManager::GetInstance().LoadTexture("logo.png")
+	std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>("logo.png");
 
 	go = std::make_shared<GameObject>();
 	go->addComponent(textureLogo);
@@ -78,6 +82,12 @@ void dae::Minigin::LoadGame() const
 	to->SetPosition(80, 20);
 	to->addComponent(text);
 	scene.Add(to);
+
+	// fps
+	std::shared_ptr<FPS> fps = std::make_shared<FPS>();
+
+	auto fpsCounter = std::make_shared<GameObject>();
+	fpsCounter->addComponent(fps);
 }
 
 void dae::Minigin::Cleanup()
@@ -116,8 +126,8 @@ void dae::Minigin::Run()
 			doContinue = input.ProcessInput();
 			while (lag >= MsPerFrame)
 			{
-				sceneManager.FixedUpdate();
-				sceneManager.Update();
+				sceneManager.FixedUpdate(deltaTime);
+				sceneManager.Update(deltaTime);
 				lag -= MsPerFrame;
 			}
 			renderer.Render();

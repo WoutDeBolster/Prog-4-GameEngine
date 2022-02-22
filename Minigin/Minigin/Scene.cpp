@@ -10,24 +10,24 @@ Scene::Scene(const std::string& name) : m_Name(name) {}
 
 Scene::~Scene() = default;
 
-void Scene::Add(const std::shared_ptr<SceneObject>&object)
+void Scene::Add(const std::shared_ptr<GameObject>&object)
 {
 	m_Objects.push_back(object);
 }
 
-void dae::Scene::FixedUpdate()
+void dae::Scene::FixedUpdate(float deltaTime)
 {
 	for (auto& object : m_Objects)
 	{
-		object->Update();
+		object->FixedUpdate(deltaTime);
 	}
 }
 
-void Scene::Update()
+void Scene::Update(float deltaTime)
 {
 	for (auto& object : m_Objects)
 	{
-		object->Update();
+		object->Update(deltaTime);
 	}
 }
 

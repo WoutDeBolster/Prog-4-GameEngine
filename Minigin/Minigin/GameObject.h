@@ -1,24 +1,25 @@
 #pragma once
 #include "Transform.h"
-#include "SceneObject.h"
 
 namespace dae
 {
 	class BaseComponent;
-	class GameObject final : public SceneObject
+	class GameObject final
 	{
 	public:
-		void Update() override;
-		void Render() const override;
-
-		void SetPosition(float x, float y);
-
-		GameObject() = default;
+		GameObject();
 		~GameObject() = default;
+
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
+
+		void FixedUpdate(float deltaTime);
+		void Update(float deltaTime);
+		void Render() const;
+
+		void SetPosition(float x, float y);
 
 		// components
 		void addComponent(std::shared_ptr<BaseComponent> myComponent);

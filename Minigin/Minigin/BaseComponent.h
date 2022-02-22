@@ -7,6 +7,8 @@ namespace dae
 	public:
 		virtual ~BaseComponent() = default;
 
-		virtual void Update() = 0;
+		virtual void Update(float deltaTime) = 0;
+		virtual void FixedUpdate(float deltaTime);
+		virtual void Render();
 	};
 }

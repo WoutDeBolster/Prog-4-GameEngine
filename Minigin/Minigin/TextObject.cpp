@@ -9,7 +9,7 @@ dae::TextObject::TextObject(const std::string& text, const std::shared_ptr<Font>
 	: m_NeedsUpdate(true), m_Text(text), m_Font(font), m_TextTexture(nullptr)
 { }
 
-void dae::TextObject::Update()
+void dae::TextObject::Update(float DeltaTime)
 {
 	if (m_NeedsUpdate)
 	{
