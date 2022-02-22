@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
-#include "Transform.h"
+#include "TransformComp.h"
 
 namespace dae
 {
@@ -22,6 +22,7 @@ namespace dae
 		void SetTexture(const std::string& filename);
 
 	private:
+		TransformComp m_Transform;
 		std::shared_ptr<Texture2D> m_Texture{};
 	};
 }

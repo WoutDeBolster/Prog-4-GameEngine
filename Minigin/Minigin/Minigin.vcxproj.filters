@@ -42,14 +42,11 @@
     <ClInclude Include="BaseComponent.h">
       <Filter>Compontents</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="TransformComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Compontents</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files</Filter>
@@ -65,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="TextComp.h">
       <Filter>Compontents</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,14 +92,11 @@
     <ClCompile Include="BaseComponent.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
+    <ClCompile Include="TransformComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Compontents</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files</Filter>
@@ -115,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="TextComp.cpp">
       <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

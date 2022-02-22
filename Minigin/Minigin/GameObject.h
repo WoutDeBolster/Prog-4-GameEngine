@@ -1,5 +1,5 @@
 #pragma once
-#include "Transform.h"
+#include "TransformComp.h"
 
 namespace dae
 {
@@ -38,6 +38,6 @@ namespace dae
 		}
 		std::vector<std::shared_ptr<BaseComponent>> m_Components;
 	private:
-		Transform m_Transform;
+		TransformComp m_Transform;
 	};
 }

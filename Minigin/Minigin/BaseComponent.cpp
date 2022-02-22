@@ -11,5 +11,5 @@ void dae::BaseComponent::Render()
 
 void dae::BaseComponent::setGameObject(std::shared_ptr<GameObject> gameObject)
 {
-	m_pGameObject = gameObject;
+	m_GameObject = gameObject;
 }

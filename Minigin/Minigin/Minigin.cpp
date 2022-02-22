@@ -64,6 +64,7 @@ void dae::Minigin::LoadGame() const
 	//ResourceManager::GetInstance().LoadTexture("background.jpg")
 	std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>("background.jpg");
 	auto go = std::make_shared<GameObject>();
+	textureBackground->setGameObject(go);
 	go->addComponent(textureBackground);
 	scene.Add(go);
 
@@ -71,6 +72,7 @@ void dae::Minigin::LoadGame() const
 	std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>("logo.png");
 
 	go = std::make_shared<GameObject>();
+	textureLogo->setGameObject(go);
 	go->addComponent(textureLogo);
 	go->SetPosition(216, 180);
 	scene.Add(go);
@@ -79,6 +81,7 @@ void dae::Minigin::LoadGame() const
 	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", Font);
 
 	auto to = std::make_shared<GameObject>();
+	text->setGameObject(to);
 	to->SetPosition(80, 20);
 	to->addComponent(text);
 	scene.Add(to);
@@ -87,6 +90,7 @@ void dae::Minigin::LoadGame() const
 	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
 
 	auto FPSCompCounter = std::make_shared<GameObject>();
+	FPS->setGameObject(FPSCompCounter);
 	FPSCompCounter->addComponent(FPS);
 }
 

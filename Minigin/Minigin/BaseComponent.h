@@ -15,6 +15,6 @@ namespace dae
 		void setGameObject(std::shared_ptr<GameObject> gameObject);
 
 	protected:
-		std::weak_ptr<GameObject> m_pGameObject;
+		std::weak_ptr<GameObject> m_GameObject;
 	};
 }
