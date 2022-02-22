@@ -11,7 +11,7 @@ namespace dae
 	class Texture2D final : public BaseComponent
 	{
 	public:
-		Texture2D() = default;
+		explicit Texture2D(SDL_Texture* texture);
 		~Texture2D();
 
 		Texture2D(const Texture2D&) = delete;
@@ -22,7 +22,6 @@ namespace dae
 		void Update() override;
 
 		SDL_Texture* GetSDLTexture() const { return m_Texture; };
-		explicit Texture2D(SDL_Texture* texture);
 
 	private:
 		SDL_Texture* m_Texture;

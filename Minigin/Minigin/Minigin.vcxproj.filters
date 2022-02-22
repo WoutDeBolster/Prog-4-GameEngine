@@ -63,7 +63,7 @@
     <ClInclude Include="TextObject.h">
       <Filter>Compontents</Filter>
     </ClInclude>
-    <ClInclude Include="FPSComp.h">
+    <ClInclude Include="FPS.h">
       <Filter>Compontents</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,7 +110,7 @@
     <ClCompile Include="TextObject.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
-    <ClCompile Include="FPSComp.cpp">
+    <ClCompile Include="FPS.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>

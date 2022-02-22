@@ -1,18 +1,21 @@
-﻿  Font.cpp
+﻿  MiniginPCH.cpp
+  BaseComponent.cpp
+  Font.cpp
+  FPS.cpp
+  GameObject.cpp
+  InputManager.cpp
+  Main.cpp
+  Minigin.cpp
+D:\Github\Prog-4-GameEngine\Minigin\Minigin\Minigin.cpp(63,6): error C2039: 'SetTexture': is not a member of 'dae::GameObject'
+D:\Github\Prog-4-GameEngine\Minigin\Minigin\GameObject.h(8): message : see declaration of 'dae::GameObject'
+D:\Github\Prog-4-GameEngine\Minigin\Minigin\Minigin.cpp(69,30): error C2664: 'void dae::GameObject::addComponent(std::shared_ptr<dae::BaseComponent>)': cannot convert argument 1 from 'std::shared_ptr<dae::Texture2D>' to 'std::shared_ptr<dae::BaseComponent>'
+D:\Github\Prog-4-GameEngine\Minigin\Minigin\Minigin.cpp(69,19): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+D:\Github\Prog-4-GameEngine\Minigin\Minigin\GameObject.h(24,8): message : see declaration of 'dae::GameObject::addComponent'
+  Renderer.cpp
   ResourceManager.cpp
+  Scene.cpp
+  SceneManager.cpp
   TextObject.cpp
+  Texture2D.cpp
   Transform.cpp
   Generating Code...
-  Minigin.vcxproj -> D:\Github\Prog-4-GameEngine\Minigin\x64\Debug\Minigin.exe
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
-  1 File(s) copied
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\zlib1.dll
-  6 File(s) copied
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
-  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
-  2 File(s) copied
