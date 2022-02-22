@@ -54,7 +54,7 @@
     <ClInclude Include="InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FPS.h">
+    <ClInclude Include="FPSComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
@@ -63,7 +63,7 @@
     <ClInclude Include="TextureComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
+    <ClInclude Include="TextComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FPS.cpp">
+    <ClCompile Include="FPSComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
@@ -113,7 +113,7 @@
     <ClCompile Include="TextureComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
-    <ClCompile Include="TextObject.cpp">
+    <ClCompile Include="TextComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>

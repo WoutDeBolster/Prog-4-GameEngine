@@ -5,10 +5,10 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
-#include "TextObject.h"
+#include "TextComp.h"
 #include "GameObject.h"	
 #include "Scene.h"
-#include "FPS.h"
+#include "FPSComp.h"
 #include "TextureComp.h"
 
 #include <chrono>
@@ -75,19 +75,19 @@ void dae::Minigin::LoadGame() const
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
-	std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	std::shared_ptr<TextObject> text = std::make_shared<TextObject>("Programming 4 Assignment", font);
+	std::shared_ptr<Font> Font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", Font);
 
 	auto to = std::make_shared<GameObject>();
 	to->SetPosition(80, 20);
 	to->addComponent(text);
 	scene.Add(to);
 
-	// fps
-	std::shared_ptr<FPS> fps = std::make_shared<FPS>();
+	// FPSComp
+	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
 
-	auto fpsCounter = std::make_shared<GameObject>();
-	fpsCounter->addComponent(fps);
+	auto FPSCompCounter = std::make_shared<GameObject>();
+	FPSCompCounter->addComponent(FPS);
 }
 
 void dae::Minigin::Cleanup()

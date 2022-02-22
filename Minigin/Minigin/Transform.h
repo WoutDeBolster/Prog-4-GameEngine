@@ -15,9 +15,9 @@ namespace dae
 		Transform& operator= (const Transform&) = delete;
 		Transform& operator= (const Transform&&) = delete;
 
-		void Update(float DeltaTime) override;
+		void Update(float) override;
 
-		const glm::vec3& GetPosition() const { return m_Position; }
+		const glm::vec3& GetPosition() const;
 		void SetPosition(float x, float y, float z);
 	private:
 		glm::vec3 m_Position;

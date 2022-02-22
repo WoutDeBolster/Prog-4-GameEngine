@@ -28,9 +28,10 @@ namespace dae
 		{
 			for (std::shared_ptr<BaseComponent> bc : m_Components)
 			{
-				if (dynamic_cast<std::shared_ptr<T>>(bc))
+				std::shared_ptr<T> castedPointer = dynamic_pointer_cast<T>(bc);
+				if (castedPointer)
 				{
-					return (std::shared_ptr<T>)bc;
+					return castedPointer;
 				}
 			}
 			return nullptr;

@@ -8,7 +8,7 @@ namespace dae
 	/**
 	 * Simple RAII wrapper for an SDL_Texture
 	 */
-	class Texture2D
+	class Texture2D final
 	{
 	public:
 		explicit Texture2D(SDL_Texture* texture);

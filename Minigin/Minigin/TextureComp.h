@@ -7,7 +7,8 @@ namespace dae
 	class Texture2D;
 	class TextureComp final : public BaseComponent
 	{
-		TextureComp() = default;
+	public:
+		TextureComp(const std::string& filename);
 		~TextureComp() = default;
 
 		TextureComp(const TextureComp&) = delete;
@@ -15,13 +16,12 @@ namespace dae
 		TextureComp& operator= (const TextureComp&) = delete;
 		TextureComp& operator= (const TextureComp&&) = delete;
 
-		void Update(float DeltaTime) override;
+		void Update(float) override;
 		void Render() override;
 
 		void SetTexture(const std::string& filename);
 
 	private:
-		Transform m_Transform;
 		std::shared_ptr<Texture2D> m_Texture{};
 	};
 }

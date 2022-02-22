@@ -1,40 +1,16 @@
-﻿  BaseComponent.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\BaseComponent.cpp(4,44): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\BaseComponent.cpp(4,44): warning C4100: 'deltaTime': unreferenced formal parameter
-  Font.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\Font.cpp(10,30): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\Font.cpp(10,30): warning C4100: 'DeltaTime': unreferenced formal parameter
-  FPS.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\FPS.cpp(4,29): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\FPS.cpp(4,29): warning C4100: 'DeltaTime': unreferenced formal parameter
-  Minigin.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.30.30705\include\xmemory(298,1): error C2248: 'dae::TextureComp::~TextureComp': cannot access private member declared in class 'dae::TextureComp'
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextureComp.h(26): message : compiler has generated 'dae::TextureComp::~TextureComp' here
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextureComp.h(8): message : see declaration of 'dae::TextureComp'
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.30.30705\include\memory(2029): message : see reference to function template instantiation 'void std::_Destroy_in_place<_Ty>(_Ty &) noexcept' being compiled
-          with
-          [
-              _Ty=dae::TextureComp
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.30.30705\include\memory(2028): message : while compiling class template member function 'void std::_Ref_count_obj2<_Ty>::_Destroy(void) noexcept'
-          with
-          [
-              _Ty=dae::TextureComp
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.30.30705\include\memory(2722): message : see reference to class template instantiation 'std::_Ref_count_obj2<_Ty>' being compiled
-          with
-          [
-              _Ty=dae::TextureComp
-          ]
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\Minigin.cpp(65): message : see reference to function template instantiation 'std::shared_ptr<dae::TextureComp> std::make_shared<dae::TextureComp,const char(&)[15]>(const char (&)[15])' being compiled
-  TextObject.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextObject.cpp(12,36): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextObject.cpp(12,36): warning C4100: 'DeltaTime': unreferenced formal parameter
-  Texture2D.cpp
-  TextureComp.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextureComp.cpp(6,37): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\TextureComp.cpp(6,37): warning C4100: 'DeltaTime': unreferenced formal parameter
+﻿  FPSComp.cpp
   Transform.cpp
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\Transform.cpp(4,35): error C2220: the following warning is treated as an error
-D:\Github\Prog-4-GameEngine\Minigin\Minigin\Transform.cpp(4,35): warning C4100: 'DeltaTime': unreferenced formal parameter
   Generating Code...
+  Minigin.vcxproj -> D:\Github\Prog-4-GameEngine\Minigin\x64\Debug\Minigin.exe
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
+  1 File(s) copied
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  6 File(s) copied
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  D:\Github\Prog-4-GameEngine\Minigin\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  2 File(s) copied

@@ -3,7 +3,12 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 
-void dae::TextureComp::Update(float DeltaTime)
+dae::TextureComp::TextureComp(const std::string& filename)
+{
+	SetTexture(filename);
+}
+
+void dae::TextureComp::Update(float)
 {
 }
 
