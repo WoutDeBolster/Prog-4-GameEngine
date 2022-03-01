@@ -6,7 +6,13 @@ namespace dae
 	class BaseComponent
 	{
 	public:
+		BaseComponent() = default;
 		virtual ~BaseComponent() = default;
+
+		BaseComponent(const BaseComponent&) = delete;
+		BaseComponent(BaseComponent&&) = delete;
+		BaseComponent& operator= (const BaseComponent&) = delete;
+		BaseComponent& operator= (const BaseComponent&&) = delete;
 
 		virtual void Update(float fixedTime) = 0;
 		virtual void FixedUpdate(float deltaTime);

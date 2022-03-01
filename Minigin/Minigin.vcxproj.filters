@@ -93,6 +93,12 @@
     <ClInclude Include="..\3rdParty\imgui-1.86\backends\imgui_impl_sdl.h">
       <Filter>Imgui</Filter>
     </ClInclude>
+    <ClInclude Include="ImguiComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.86\imgui_plot.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -162,6 +168,12 @@
       <Filter>Imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.86\backends\imgui_impl_sdl.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImguiComp.cpp">
+      <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_plot.cpp">
       <Filter>Imgui</Filter>
     </ClCompile>
   </ItemGroup>

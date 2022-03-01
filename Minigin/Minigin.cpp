@@ -10,6 +10,7 @@
 #include "Scene.h"
 #include "FPSComp.h"
 #include "TextureComp.h"
+#include "ImguiComp.h"
 
 #include <chrono>
 
@@ -99,6 +100,14 @@ void dae::Minigin::LoadGame() const
 	FPSCompCounter->addComponent(FPS);
 	FPSCompCounter->addComponent(text2);
 	scene.Add(FPSCompCounter);
+
+	// ImguiComp
+	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(m_Window);
+
+	auto ImguiObj = std::make_shared<GameObject>();
+	imgui->setGameObject(ImguiObj);
+	ImguiObj->addComponent(imgui);
+	scene.Add(ImguiObj);
 }
 
 void dae::Minigin::Cleanup()
