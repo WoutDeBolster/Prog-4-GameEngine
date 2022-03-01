@@ -30,7 +30,7 @@ namespace dae
 		std::vector<float> m_StepSizes{ 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
 
 		int m_SampleSizeEx1{ 100 };
-		int m_SampleSizeEx23{ 100 };
+		int m_SampleSizeEx23{ 10 };
 
 		bool m_StartEx1{ false };
 		bool m_StartEx2{ false };

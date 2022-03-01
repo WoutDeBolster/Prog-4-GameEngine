@@ -140,6 +140,27 @@ void dae::ImguiComp::Update(float)
 
 		ImGui::Plot("Exercise 2", confEx3);
 	}
+
+	if (m_StartEx2 && m_StartEx3)
+	{
+		const float* pGraphCombination[] = { m_AverageEx2.data(), m_AverageEx3.data() };
+
+		ImGui::PlotConfig confEx23;
+		confEx23.values.xs = m_StepSizes.data();
+		confEx23.values.ys_list = &pGraphCombination[0];
+		confEx23.values.ys_count = 2;
+		confEx23.values.count = static_cast<int>(m_StepSizes.size());
+		confEx23.scale.min = 0;
+		confEx23.scale.max = 10000;
+		confEx23.tooltip.show = true;
+		confEx23.tooltip.format = "x=%.2f, y=%.2f";
+		confEx23.grid_x.show = true;
+		confEx23.grid_y.show = true;
+		confEx23.frame_size = ImVec2(200, 100);
+		confEx23.line_thickness = 2.f;
+
+		ImGui::Plot("Exercise 2 and 3 combined", confEx23);
+	}
 	ImGui::End();
 }
 
