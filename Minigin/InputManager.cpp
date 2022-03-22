@@ -1,43 +1,64 @@
 #include "MiniginPCH.h"
 #include "InputManager.h"
-#include <backends/imgui_impl_sdl.h>
+
+dae::InputManager::InputManager()
+{
+	m_pControllers.push_back(new XboxController(0));
+}
+
+dae::InputManager::~InputManager()
+{
+	for (size_t i = 0; i < m_pControllers.size(); ++i)
+	{
+		delete m_pControllers[i];
+	}
+}
 
 bool dae::InputManager::ProcessInput()
 {
-	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
-	XInputGetState(0, &m_CurrentState);
+	for (size_t i = 0; i < m_pControllers.size(); ++i)
+	{
+		m_pControllers[i]->Update();
 
-	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) {
-			return false;
-		}
-		if (e.type == SDL_KEYDOWN) {
+		for (auto CommandsIterator = m_Commands.begin(); CommandsIterator != m_Commands.end(); ++CommandsIterator)
+		{
+			switch (CommandsIterator->second.second)
+			{
+			case dae::InputType::keyPressed:
+				if (m_pControllers[i]->IsPressed(CommandsIterator->first.second))
+				{
+					CommandsIterator->second.first.get()->Execute();
+				}
+				break;
+			case dae::InputType::keyUp:
+				if (m_pControllers[i]->IsUp(CommandsIterator->first.second))
+				{
+					CommandsIterator->second.first.get()->Execute();
+				}
+				break;
+			case dae::InputType::keyDown:
+				if (m_pControllers[i]->IsDown(CommandsIterator->first.second))
+				{
+					CommandsIterator->second.first.get()->Execute();
+				}
+				break;
+			default:
+				continue;
+				break;
+			}
 
-		}
-		if (e.type == SDL_MOUSEBUTTONDOWN) {
-
+			if (m_pControllers[i]->IsPressed(XboxController::ControllerButton::LeftShoulder))
+			{
+				return false;
+			}
 		}
 	}
-	// prosses imgui input
-	ImGui_ImplSDL2_ProcessEvent(&e);
 
 	return true;
 }
 
-bool dae::InputManager::IsPressed(ControllerButton button) const
+void dae::InputManager::SetButtonCommand(unsigned int controllerIndex, XboxController::ControllerButton button,
+	Command* command, InputType InputType)
 {
-	switch (button)
-	{
-	case ControllerButton::ButtonA:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
-	case ControllerButton::ButtonB:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_B;
-	case ControllerButton::ButtonX:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X;
-	case ControllerButton::ButtonY:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
-	default: return false;
-	}
+	m_Commands[std::make_pair(controllerIndex, button)] = std::make_pair(std::unique_ptr<Command>(command), InputType);
 }
-

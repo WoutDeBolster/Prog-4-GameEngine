@@ -135,6 +135,11 @@ void dae::Minigin::Run()
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
 
+		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonA, new JumpCommand, InputType::keyPressed);
+		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonB, new FireCommand, InputType::keyPressed);
+		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new DuckCommand, InputType::keyPressed);
+		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new FartCommand, InputType::keyPressed);
+
 		bool doContinue = true;
 		while (doContinue)
 		{
