@@ -5,7 +5,8 @@
 #include "GameObject.h"
 #include "Texture2D.h"
 
-dae::TextureComp::TextureComp(const std::string& filename)
+dae::TextureComp::TextureComp(std::shared_ptr<GameObject> pOwner, const std::string& filename)
+	:BaseComponent(pOwner)
 {
 	SetTexture(filename);
 }

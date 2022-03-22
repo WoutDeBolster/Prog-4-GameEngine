@@ -63,49 +63,56 @@ void dae::Minigin::LoadGame() const
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
 	// background
-	std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>("background.jpg");
 	auto go = std::make_shared<GameObject>();
-	textureBackground->setGameObject(go);
+	std::shared_ptr<TextureComp> textureBackground = std::make_shared<TextureComp>(go, "background.jpg");
+	std::shared_ptr<TransformComp> Transform = std::make_shared<TransformComp>(go);
+
 	go->addComponent(textureBackground);
+	go->addComponent(Transform);
+
 	scene.Add(go);
 
 	// dae logo
-	std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>("logo.png");
-
 	go = std::make_shared<GameObject>();
-	textureLogo->setGameObject(go);
+	std::shared_ptr<TextureComp> textureLogo = std::make_shared<TextureComp>(go, "logo.png");
+	Transform = std::make_shared<TransformComp>(go);
+
 	go->addComponent(textureLogo);
+	go->addComponent(Transform);
+
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
 	// top text
-	std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	std::shared_ptr<TextComp> text = std::make_shared<TextComp>("Programming 4 Assignment", font);
-
 	auto to = std::make_shared<GameObject>();
-	text->setGameObject(to);
-	to->SetPosition(80, 20);
+	std::shared_ptr<Font> font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	std::shared_ptr<TextComp> text = std::make_shared<TextComp>(to, "Programming 4 Assignment", font);
+	Transform = std::make_shared<TransformComp>(to);
+
 	to->addComponent(text);
+	to->addComponent(Transform);
+
+	to->SetPosition(80, 20);
 	scene.Add(to);
 
 	// FPSComp
-	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>();
-	std::shared_ptr<Font> font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 18);
-	std::shared_ptr<TextComp> text2 = std::make_shared<TextComp>(std::to_string(FPS->GetFPS()), font2);
-
 	auto FPSCompCounter = std::make_shared<GameObject>();
-	FPS->setGameObject(FPSCompCounter);
-	text2->setGameObject(FPSCompCounter);
-	FPSCompCounter->SetPosition(10, 10);
+	std::shared_ptr<FPSComp> FPS = std::make_shared<FPSComp>(FPSCompCounter);
+	std::shared_ptr<Font> font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 18);
+	std::shared_ptr<TextComp> text2 = std::make_shared<TextComp>(FPSCompCounter, std::to_string(FPS->GetFPS()), font2);
+	Transform = std::make_shared<TransformComp>(FPSCompCounter);
+
 	FPSCompCounter->addComponent(FPS);
 	FPSCompCounter->addComponent(text2);
+	FPSCompCounter->addComponent(Transform);
+
+	FPSCompCounter->SetPosition(10, 10);
 	scene.Add(FPSCompCounter);
 
 	// ImguiComp
-	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(m_Window);
+	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(FPSCompCounter, m_Window);
 
 	auto ImguiObj = std::make_shared<GameObject>();
-	imgui->setGameObject(ImguiObj);
 	ImguiObj->addComponent(imgui);
 	scene.Add(ImguiObj);
 }

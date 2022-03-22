@@ -6,7 +6,7 @@ namespace dae
 	class TransformComp final : public BaseComponent
 	{
 	public:
-		TransformComp() = default;
+		TransformComp(std::shared_ptr<GameObject> pOwner);
 		virtual ~TransformComp() = default;
 
 		TransformComp(const TransformComp&) = delete;

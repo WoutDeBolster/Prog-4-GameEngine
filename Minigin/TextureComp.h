@@ -7,7 +7,7 @@ namespace dae
 	class TextureComp final : public BaseComponent
 	{
 	public:
-		TextureComp(const std::string& filename);
+		TextureComp(std::shared_ptr<GameObject> pOwner, const std::string& filename);
 		~TextureComp() = default;
 
 		TextureComp(const TextureComp&) = delete;

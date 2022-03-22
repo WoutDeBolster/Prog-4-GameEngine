@@ -7,7 +7,7 @@ namespace dae
 	class ImguiComp final : public BaseComponent
 	{
 	public:
-		ImguiComp(SDL_Window* pWindow);
+		ImguiComp(std::shared_ptr<GameObject> pOwner, SDL_Window* pWindow);
 		virtual ~ImguiComp();
 
 		ImguiComp(const ImguiComp&) = delete;

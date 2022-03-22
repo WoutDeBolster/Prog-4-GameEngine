@@ -6,8 +6,8 @@
 #include "Texture2D.h"
 #include "GameObject.h"
 
-dae::TextComp::TextComp(const std::string& text, const std::shared_ptr<Font>& Font)
-	: m_NeedsUpdate(true), m_Text(text), m_Font(Font), m_TextTexture(nullptr)
+dae::TextComp::TextComp(std::shared_ptr<GameObject> pOwner, const std::string& text, const std::shared_ptr<Font>& Font)
+	: BaseComponent(pOwner), m_NeedsUpdate(true), m_Text(text), m_Font(Font), m_TextTexture(nullptr)
 { }
 
 void dae::TextComp::Update(float)

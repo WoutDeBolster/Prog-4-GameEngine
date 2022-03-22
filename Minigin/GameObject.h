@@ -51,7 +51,6 @@ namespace dae
 		void AddChild(std::shared_ptr<GameObject> child);
 
 	private:
-		TransformComp m_Transform;
 		std::weak_ptr<GameObject> m_Parent;
 		std::vector<std::shared_ptr<GameObject>> m_Childeren;
 	};

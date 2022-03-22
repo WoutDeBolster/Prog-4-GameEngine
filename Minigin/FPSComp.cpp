@@ -3,6 +3,11 @@
 #include "GameObject.h"
 #include "TextComp.h"
 
+dae::FPSComp::FPSComp(std::shared_ptr<GameObject> pOwner)
+	:BaseComponent(pOwner)
+{
+}
+
 void dae::FPSComp::Update(float deltaTime)
 {
 	m_FPS = static_cast<int>(1.f / deltaTime);

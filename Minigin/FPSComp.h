@@ -6,7 +6,7 @@ namespace dae
 	class FPSComp final : public BaseComponent
 	{
 	public:
-		FPSComp() = default;
+		FPSComp(std::shared_ptr<GameObject> pOwner);
 		~FPSComp() = default;
 
 		FPSComp(const FPSComp&) = delete;
@@ -19,7 +19,7 @@ namespace dae
 		int GetFPS() const;
 
 	private:
-		int m_FPS;
+		int m_FPS{ 0 };
 	};
 }
 

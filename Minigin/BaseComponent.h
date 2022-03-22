@@ -6,7 +6,7 @@ namespace dae
 	class BaseComponent
 	{
 	public:
-		BaseComponent() = default;
+		BaseComponent(std::shared_ptr<GameObject> pOwner);
 		virtual ~BaseComponent() = default;
 
 		BaseComponent(const BaseComponent&) = delete;
@@ -17,8 +17,6 @@ namespace dae
 		virtual void Update(float fixedTime) = 0;
 		virtual void FixedUpdate(float deltaTime);
 		virtual void Render() const;
-
-		void setGameObject(std::shared_ptr<GameObject> gameObject);
 
 	protected:
 		std::weak_ptr<GameObject> m_GameObject;

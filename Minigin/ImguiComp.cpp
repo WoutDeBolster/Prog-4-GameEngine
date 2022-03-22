@@ -38,8 +38,8 @@ std::array<GameObject3D, 1000000> g_ArrEx2{};
 std::array<GameObject3DAlt, 1000000> g_ArrEx3{};
 // =========================
 
-dae::ImguiComp::ImguiComp(SDL_Window* pWindow)
-	: BaseComponent()
+dae::ImguiComp::ImguiComp(std::shared_ptr<GameObject> pOwner, SDL_Window* pWindow)
+	: BaseComponent(pOwner)
 	, m_pWindow{ pWindow }
 {
 	IMGUI_CHECKVERSION();

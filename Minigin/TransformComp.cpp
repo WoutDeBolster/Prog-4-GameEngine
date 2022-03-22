@@ -1,6 +1,11 @@
 #include "MiniginPCH.h"
 #include "TransformComp.h"
 
+dae::TransformComp::TransformComp(std::shared_ptr<GameObject> pOwner)
+	:BaseComponent(pOwner)
+{
+}
+
 void dae::TransformComp::Update(float)
 {
 

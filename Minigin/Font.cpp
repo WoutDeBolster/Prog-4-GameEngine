@@ -7,10 +7,6 @@ dae::Font::~Font()
 	TTF_CloseFont(m_Font);
 }
 
-void dae::Font::Update(float)
-{
-}
-
 _TTF_Font* dae::Font::GetFont() const
 {
 	return m_Font;

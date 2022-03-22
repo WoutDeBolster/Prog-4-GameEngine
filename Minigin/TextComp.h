@@ -8,7 +8,7 @@ namespace dae
 	class TextComp final : public BaseComponent
 	{
 	public:
-		explicit TextComp(const std::string& text, const std::shared_ptr<Font>& Font);
+		explicit TextComp(std::shared_ptr<GameObject> pOwner, const std::string& text, const std::shared_ptr<Font>& Font);
 		virtual ~TextComp() = default;
 
 		TextComp(const TextComp& other) = delete;
