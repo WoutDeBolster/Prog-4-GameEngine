@@ -11,6 +11,8 @@
 #include "FPSComp.h"
 #include "TextureComp.h"
 #include "ImguiComp.h"
+#include "PeterPepperComp.h"
+#include "Achievements.h"
 
 #include <chrono>
 
@@ -110,11 +112,31 @@ void dae::Minigin::LoadGame() const
 	scene.Add(FPSCompCounter);
 
 	// ImguiComp
-	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(FPSCompCounter, m_Window);
-
 	auto ImguiObj = std::make_shared<GameObject>();
+	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
+
 	ImguiObj->addComponent(imgui);
 	scene.Add(ImguiObj);
+
+	// playerComp
+	auto playerObj = std::make_shared<GameObject>();
+	Transform = std::make_shared<TransformComp>(playerObj);
+	std::shared_ptr<PeterPepperComp> peter = std::make_shared<PeterPepperComp>(playerObj);
+	peter->AddObserver(std::make_shared<Achievements>());
+
+
+	playerObj->addComponent(Transform);
+	playerObj->addComponent(peter);
+	scene.Add(playerObj);
+
+	// input
+	auto& input = InputManager::GetInstance();
+
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonA, new JumpCommand, InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonB, new FireCommand, InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new DuckCommand, InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new FartCommand, InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::RightShoulder, new KillCommand(peter), InputType::keyPressed);
 }
 
 void dae::Minigin::Cleanup()
@@ -141,11 +163,6 @@ void dae::Minigin::Run()
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
-
-		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonA, new JumpCommand, InputType::keyPressed);
-		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonB, new FireCommand, InputType::keyPressed);
-		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new DuckCommand, InputType::keyPressed);
-		input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new FartCommand, InputType::keyPressed);
 
 		bool doContinue = true;
 		while (doContinue)

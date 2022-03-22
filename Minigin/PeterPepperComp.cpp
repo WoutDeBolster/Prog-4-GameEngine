@@ -12,5 +12,5 @@ void dae::PeterPepperComp::Update(float)
 
 void dae::PeterPepperComp::Die()
 {
-
+	Notify(*m_GameObject.lock().get(), Event::ActorDie);
 }

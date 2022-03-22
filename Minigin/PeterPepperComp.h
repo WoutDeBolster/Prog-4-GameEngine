@@ -4,7 +4,7 @@
 
 namespace dae
 {
-	class PeterPepperComp final : public BaseComponent
+	class PeterPepperComp final : public BaseComponent, public Subject
 	{
 	public:
 		PeterPepperComp(std::shared_ptr<GameObject> pOwner);
@@ -17,9 +17,6 @@ namespace dae
 
 		void Update(float fixedTime) override;
 		void Die();
-
-	private:
-		std::unique_ptr<Subject> m_ActorChanged;
 	};
 }
 

@@ -21,4 +21,5 @@ void dae::Achievements::Notify(const GameObject&, Event events)
 
 void dae::Achievements::Unlock(Achievement)
 {
+	std::cout << "unlockedAchievment";
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "PeterPepperComp.h"
 
 namespace dae
 {
@@ -38,5 +39,17 @@ namespace dae
 	public:
 		void Execute() override { std::cout << "Player Fart!\n"; }
 		void Undo() override { std::cout << "Player Undo Fart!\n"; }
+	};
+
+	class KillCommand final : public Command
+	{
+	public:
+		KillCommand(std::shared_ptr<PeterPepperComp> player);
+
+		void Execute() override { m_Player.lock().get()->Die(); }
+		void Undo() override { std::cout << "Player Undo Killed!\n"; }
+
+	private:
+		std::weak_ptr<PeterPepperComp> m_Player;
 	};
 }
