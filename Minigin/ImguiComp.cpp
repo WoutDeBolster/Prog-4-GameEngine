@@ -177,11 +177,11 @@ void dae::ImguiComp::Exercise1()
 
 	for (int x = 0; stepSize < 1024; x++)
 	{
-		for (size_t y = 0; y < m_SampleSizeEx1; y++)
+		for (int y = 0; y < m_SampleSizeEx1; y++)
 		{
 			auto startTime = std::chrono::high_resolution_clock::now();
 
-			for (int i = 0; i < g_ArrEx1.size(); i += stepSize)
+			for (size_t i = 0; i < g_ArrEx1.size(); i += stepSize)
 			{
 				g_ArrEx1[i] += 1;
 			}
@@ -214,11 +214,11 @@ void dae::ImguiComp::Exercise2()
 
 	for (int x = 0; stepSize < 1024; x++)
 	{
-		for (size_t y = 0; y < m_SampleSizeEx23; y++)
+		for (int y = 0; y < m_SampleSizeEx23; y++)
 		{
 			auto startTime = std::chrono::high_resolution_clock::now();
 
-			for (int i = 0; i < g_ArrEx2.size(); i += stepSize)
+			for (size_t i = 0; i < g_ArrEx2.size(); i += stepSize)
 			{
 				g_ArrEx2[i].ID += 1;
 			}
@@ -249,11 +249,11 @@ void dae::ImguiComp::Exercise3()
 
 	for (int x = 0; stepSize < 1024; x++)
 	{
-		for (size_t y = 0; y < m_SampleSizeEx23; y++)
+		for (int y = 0; y < m_SampleSizeEx23; y++)
 		{
 			auto startTime = std::chrono::high_resolution_clock::now();
 
-			for (int i = 0; i < g_ArrEx3.size(); i += stepSize)
+			for (size_t i = 0; i < g_ArrEx3.size(); i += stepSize)
 			{
 				g_ArrEx3[i].ID += 1;
 			}

@@ -17,6 +17,7 @@
 #include "PointsComp.h"
 
 #include <chrono>
+//#include <steam_api.h>
 
 using namespace std;
 using namespace std::chrono;
@@ -290,7 +291,9 @@ void dae::Minigin::Run()
 
 			doContinue = input.ProcessInput();
 			sceneManager.Update(deltaTime);
-			while (lag >= static_cast<float>(MsPerFrame / 1000.f))
+			//SteamAPI_RunCallbacks();
+
+			while (lag >= static_cast<float>(m_FixedTimeStep / 1000.f))
 			{
 				sceneManager.FixedUpdate(deltaTime);
 				lag -= MsPerFrame;
