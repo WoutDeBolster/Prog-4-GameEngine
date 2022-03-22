@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include "PeterPepperComp.h"
+#include "HealthComp.h"
+#include "PointsComp.h"
 
 namespace dae
 {
@@ -51,5 +53,29 @@ namespace dae
 
 	private:
 		std::weak_ptr<PeterPepperComp> m_Player;
+	};
+
+	class DammageCommand final : public Command
+	{
+	public:
+		DammageCommand(std::shared_ptr<HealthComp> health);
+
+		void Execute() override { m_Health.lock().get()->DistractHealth(1); }
+		void Undo() override { std::cout << "Player Undo Killed!\n"; }
+
+	private:
+		std::weak_ptr<HealthComp> m_Health;
+	};
+
+	class IncreasePointsCommand final : public Command
+	{
+	public:
+		IncreasePointsCommand(std::shared_ptr<PointsComp> points);
+
+		void Execute() override { m_Points.lock().get()->AddPoints(25); }
+		void Undo() override { std::cout << "Player Undo Killed!\n"; }
+
+	private:
+		std::weak_ptr<PointsComp> m_Points;
 	};
 }

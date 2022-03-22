@@ -6,7 +6,7 @@ namespace dae
 	enum class Event
 	{
 		ActorDie,
-		ActorFell,
+		GainPoints,
 	};
 
 	class Observer

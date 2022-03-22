@@ -12,7 +12,7 @@ void dae::Achievements::Notify(const GameObject&, Event events)
 			m_NoONeElseDied = false;
 		}
 		break;
-	case dae::Event::ActorFell:
+	case dae::Event::GainPoints:
 		break;
 	default:
 		break;
@@ -21,5 +21,5 @@ void dae::Achievements::Notify(const GameObject&, Event events)
 
 void dae::Achievements::Unlock(Achievement)
 {
-	std::cout << "unlockedAchievment";
+	std::cout << "unlockedAchievment" << std::endl;
 }

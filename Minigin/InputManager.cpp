@@ -4,6 +4,7 @@
 dae::InputManager::InputManager()
 {
 	m_pControllers.push_back(new XboxController(0));
+	m_pControllers.push_back(new XboxController(1));
 }
 
 dae::InputManager::~InputManager()

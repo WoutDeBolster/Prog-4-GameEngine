@@ -8,6 +8,7 @@ dae::PeterPepperComp::PeterPepperComp(std::shared_ptr<GameObject> pOwner)
 
 void dae::PeterPepperComp::Update(float)
 {
+
 }
 
 void dae::PeterPepperComp::Die()

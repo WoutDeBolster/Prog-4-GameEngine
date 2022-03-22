@@ -129,6 +129,12 @@
     <ClInclude Include="Subject.h">
       <Filter>Header Files\Observer</Filter>
     </ClInclude>
+    <ClInclude Include="PointsComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -223,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsComp.cpp">
+      <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthComp.cpp">
+      <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

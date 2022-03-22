@@ -6,16 +6,22 @@
 #include "Texture2D.h"
 #include "GameObject.h"
 
-dae::TextComp::TextComp(std::shared_ptr<GameObject> pOwner, const std::string& text, const std::shared_ptr<Font>& Font)
-	: BaseComponent(pOwner), m_NeedsUpdate(true), m_Text(text), m_Font(Font), m_TextTexture(nullptr)
-{ }
+dae::TextComp::TextComp(std::shared_ptr<GameObject> pOwner, const std::string& text,
+	const std::shared_ptr<Font>& Font, const SDL_Color& color)
+	: BaseComponent(pOwner)
+	, m_NeedsUpdate(true)
+	, m_Text(text)
+	, m_Font(Font)
+	, m_TextTexture(nullptr)
+	, m_Color{ color }
+{
+}
 
 void dae::TextComp::Update(float)
 {
 	if (m_NeedsUpdate)
 	{
-		const SDL_Color color = { 255,255,255 }; // only white text is supported now
-		const auto surf = TTF_RenderText_Blended(m_Font->GetFont(), m_Text.c_str(), color);
+		const auto surf = TTF_RenderText_Blended(m_Font->GetFont(), m_Text.c_str(), m_Color);
 		if (surf == nullptr)
 		{
 			throw std::runtime_error(std::string("Render text failed: ") + SDL_GetError());
@@ -46,5 +52,3 @@ void dae::TextComp::SetText(const std::string& text)
 	m_Text = text;
 	m_NeedsUpdate = true;
 }
-
-

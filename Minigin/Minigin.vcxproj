@@ -198,12 +198,14 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FPSComp.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="HealthComp.h" />
     <ClInclude Include="ImguiComp.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="MiniginPCH.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="PeterPepperComp.h" />
+    <ClInclude Include="PointsComp.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
@@ -303,6 +305,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FPSComp.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="HealthComp.cpp" />
     <ClCompile Include="ImguiComp.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -316,6 +319,7 @@
     </ClCompile>
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="PeterPepperComp.cpp" />
+    <ClCompile Include="PointsComp.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
