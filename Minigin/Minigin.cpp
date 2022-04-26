@@ -250,10 +250,10 @@ void dae::Minigin::LoadGame() const
 	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new DuckCommand, InputType::keyDown);
 	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new FartCommand, InputType::keyDown);
 	//input.SetButtonCommand(0, XboxController::ControllerButton::RightShoulder, new KillCommand(peter), InputType::keyDown);
-	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Down, new DammageCommand(health), InputType::keyDown);
-	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Right, new DammageCommand(health2), InputType::keyDown);
-	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Up, new IncreasePointsCommand(points), InputType::keyDown);
-	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Left, new IncreasePointsCommand(points2), InputType::keyDown);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Down, new DammageCommand(HealthObj.get()->getComponent<HealthComp>()), InputType::keyDown);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Right, new DammageCommand(HealthObj2.get()->getComponent<HealthComp>()), InputType::keyDown);
+	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Up, new IncreasePointsCommand(PointsObj.get()->getComponent<PointsComp>()), InputType::keyDown);
+	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Left, new IncreasePointsCommand(PointsObj2.get()->getComponent<PointsComp>()), InputType::keyDown);
 }
 
 void dae::Minigin::Cleanup()

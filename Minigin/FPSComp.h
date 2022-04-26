@@ -20,6 +20,7 @@ namespace dae
 
 	private:
 		int m_FPS{ 0 };
+		float m_TextUpdateTimer{};
 	};
 }
 

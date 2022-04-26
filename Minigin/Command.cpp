@@ -6,12 +6,12 @@ dae::KillCommand::KillCommand(std::shared_ptr<PeterPepperComp> player)
 {
 }
 
-dae::DammageCommand::DammageCommand(std::shared_ptr<HealthComp> health)
-	: m_Health{ health }
+dae::DammageCommand::DammageCommand(std::shared_ptr<GameObject> obj)
+	: m_GameObj{ obj }
 {
 }
 
-dae::IncreasePointsCommand::IncreasePointsCommand(std::shared_ptr<PointsComp> points)
-	: m_Points{ points }
+dae::IncreasePointsCommand::IncreasePointsCommand(std::shared_ptr<GameObject> obj)
+	: m_GameObj{ obj }
 {
 }

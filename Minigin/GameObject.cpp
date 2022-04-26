@@ -47,11 +47,17 @@ std::shared_ptr<dae::GameObject> dae::GameObject::GetChildAt(size_t idx) const
 void dae::GameObject::RemoveChild(size_t idx)
 {
 	m_Childeren[idx]->SetParent(nullptr);
+	for (size_t i = 0; i < m_Childeren[idx].get()->GetChildCount(); i++)
+	{
+		std::shared_ptr<GameObject> currentChild{ m_Childeren[idx].get()->GetChildAt(i) };
+		currentChild.get()->RemoveChild(i);
+	}
 	m_Childeren.erase(std::find(m_Childeren.begin(), m_Childeren.end(), GetChildAt(idx)));
 }
 
 void dae::GameObject::AddChild(std::shared_ptr<GameObject> child)
 {
+	child.get()->SetParent(m_Parent.lock());
 	m_Childeren.push_back(child);
 }
 
