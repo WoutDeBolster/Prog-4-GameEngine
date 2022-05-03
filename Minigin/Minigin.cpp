@@ -14,6 +14,7 @@
 #include "Achievements.h"
 #include "HealthComp.h"
 #include "PointsComp.h"
+#include "SoundSystem.h"
 
 #include <chrono>
 //#include <steam_api.h>
@@ -64,6 +65,8 @@ void dae::Minigin::Initialize()
  */
 void dae::Minigin::LoadGame() const
 {
+	TestSound();
+
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
 	// background
@@ -305,4 +308,19 @@ void dae::Minigin::Run()
 	}
 
 	Cleanup();
+}
+
+void dae::Minigin::TestSound() const
+{
+#if _DEBUG
+	ServisLocator::RegisterSoundSystem(std::make_shared<LogginSoundSystem>(std::make_shared<SdlSoundSystem>()));
+#else
+	ServisLocator::RegisterSoundSystem(std::make_shared<SdlSoundSystem>());
+#endif
+
+	//ServisLocator::RegisterSoundSystem(std::make_shared<LogginSoundSystem>(std::make_shared < SdlSoundSystem>()));
+
+	ServisLocator::GetSoundSystem().InitSoundSystem();
+	ServisLocator::GetSoundSystem().RegisterSound(0, "../Data/05 Jingle #01.mp3");
+	ServisLocator::GetSoundSystem().play(0, 80);
 }
