@@ -16,9 +16,6 @@
     <Filter Include="Compontents">
       <UniqueIdentifier>{a39995d8-5950-40b1-9f24-b43a93988770}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Imgui">
-      <UniqueIdentifier>{11ff7f67-c9ee-48ec-aaf6-2330dd60bc39}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Input">
       <UniqueIdentifier>{ca8cefe9-30cc-482c-bfc2-bab20aff0c1a}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,12 @@
     </Filter>
     <Filter Include="Source Files\Observer">
       <UniqueIdentifier>{395be9f6-93cb-491d-96b9-9883d0d6caf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{e87e6840-159e-40a1-9156-cd85c075cfee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{d01ce38a-2284-42c5-a70e-9157fec3e31f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,36 +81,6 @@
     <ClInclude Include="Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imstb_truetype.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imconfig.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imgui.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imgui_internal.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imstb_rectpack.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imstb_textedit.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\backends\imgui_impl_opengl2.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\backends\imgui_impl_sdl.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImguiComp.h">
-      <Filter>Compontents</Filter>
-    </ClInclude>
-    <ClInclude Include="..\3rdParty\imgui-1.86\imgui_plot.h">
-      <Filter>Imgui</Filter>
-    </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
@@ -134,6 +107,12 @@
     </ClInclude>
     <ClInclude Include="HealthComp.h">
       <Filter>Compontents</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioClip.h">
+      <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -182,33 +161,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_widgets.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_demo.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_draw.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_tables.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\backends\imgui_impl_opengl2.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\backends\imgui_impl_sdl.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImguiComp.cpp">
-      <Filter>Compontents</Filter>
-    </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.86\imgui_plot.cpp">
-      <Filter>Imgui</Filter>
-    </ClCompile>
     <ClCompile Include="Command.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
@@ -235,6 +187,12 @@
     </ClCompile>
     <ClCompile Include="HealthComp.cpp">
       <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioClip.cpp">
+      <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

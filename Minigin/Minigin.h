@@ -1,5 +1,6 @@
 #pragma once
 struct SDL_Window;
+class GameObject;
 
 namespace dae
 {

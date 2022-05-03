@@ -10,7 +10,6 @@
 #include "Scene.h"
 #include "FPSComp.h"
 #include "TextureComp.h"
-#include "ImguiComp.h"
 #include "PeterPepperComp.h"
 #include "Achievements.h"
 #include "HealthComp.h"
@@ -116,12 +115,12 @@ void dae::Minigin::LoadGame() const
 	FPSCompCounter->SetPosition(10, 10);
 	scene.Add(FPSCompCounter);
 
-	// ImguiComp
-	auto ImguiObj = std::make_shared<GameObject>();
-	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
+	//// ImguiComp
+	//auto ImguiObj = std::make_shared<GameObject>();
+	//std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
 
-	ImguiObj->addComponent(imgui);
-	//scene.Add(ImguiObj);
+	//ImguiObj->addComponent(imgui);
+	////scene.Add(ImguiObj);
 
 	// Player 1
 	// playerComp
