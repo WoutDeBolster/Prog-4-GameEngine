@@ -57,6 +57,8 @@
 #include <GL/gl.h>
 #endif
 
+#pragma warning( disable : 26451 )
+
 struct ImGui_ImplOpenGL2_Data
 {
     GLuint       FontTexture;

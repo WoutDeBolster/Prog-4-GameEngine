@@ -15,6 +15,7 @@
 #include "HealthComp.h"
 #include "PointsComp.h"
 #include "SoundSystem.h"
+#include "ImguiComp.h"
 
 #include <chrono>
 //#include <steam_api.h>
@@ -118,12 +119,12 @@ void dae::Minigin::LoadGame() const
 	FPSCompCounter->SetPosition(10, 10);
 	scene.Add(FPSCompCounter);
 
-	//// ImguiComp
-	//auto ImguiObj = std::make_shared<GameObject>();
-	//std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
+	// ImguiComp
+	auto ImguiObj = std::make_shared<GameObject>();
+	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
 
-	//ImguiObj->addComponent(imgui);
-	////scene.Add(ImguiObj);
+	ImguiObj->addComponent(imgui);
+	//scene.Add(ImguiObj);
 
 	// Player 1
 	// playerComp

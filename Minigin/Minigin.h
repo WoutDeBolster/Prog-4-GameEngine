@@ -19,9 +19,10 @@ namespace dae
 		SDL_Window* m_Window{};
 
 		// object functions
-		GameObject MakeHealthObj(std::shared_ptr<GameObject> gameObject, unsigned int health, SDL_Color color);
-		GameObject MakePointObj(std::shared_ptr<GameObject> gameObject, unsigned int points, SDL_Color color);
-		GameObject MakePlayerObj(std::shared_ptr<GameObject> gameObject, std::shared_ptr<GameObject> healthObj, std::shared_ptr<GameObject> PointObj);
+		GameObject MakeHealthObj(std::shared_ptr<GameObject> gameObject, unsigned int health, SDL_Color color) const;
+		GameObject MakePointObj(std::shared_ptr<GameObject> gameObject, unsigned int points, SDL_Color color) const;
+		GameObject MakePlayerObj(std::shared_ptr<GameObject> gameObject,
+			std::shared_ptr<GameObject> healthObj, std::shared_ptr<GameObject> PointObj) const;
 		void TestSound() const;
 	};
 }

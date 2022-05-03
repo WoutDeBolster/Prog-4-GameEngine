@@ -64,103 +64,104 @@ void dae::ImguiComp::Update(float)
 	ImGui_ImplSDL2_NewFrame(m_pWindow);
 	ImGui::NewFrame();
 
-	ImGui::Begin("Exercise 1", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::InputInt("# amount of samples", &m_SampleSizeEx1);
-	// exercise 1
-	if (ImGui::Button("Calculate Exercise 1"))
-	{
-		Exercise1();
-		m_StartEx1 = true;
-	}
-	if (m_StartEx1)
-	{
-		ImGui::PlotConfig confEx1;
-		confEx1.values.xs = m_StepSizes.data();
-		confEx1.values.ys = m_AverageEx1.data();
-		confEx1.values.count = static_cast<int>(m_StepSizes.size());
-		confEx1.scale.min = 0;
-		confEx1.scale.max = *std::max_element(m_AverageEx1.begin(), m_AverageEx1.end());
-		confEx1.tooltip.show = true;
-		confEx1.tooltip.format = "x=%.2f, y=%.2f";
-		confEx1.grid_x.show = true;
-		confEx1.grid_y.show = true;
-		confEx1.frame_size = ImVec2(200, 100);
-		confEx1.line_thickness = 2.f;
+	//// EXERCISE WEEK 2
+	//ImGui::Begin("Exercise 1", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+	//ImGui::InputInt("# amount of samples", &m_SampleSizeEx1);
+	//// exercise 1
+	//if (ImGui::Button("Calculate Exercise 1"))
+	//{
+	//	Exercise1();
+	//	m_StartEx1 = true;
+	//}
+	//if (m_StartEx1)
+	//{
+	//	ImGui::PlotConfig confEx1;
+	//	confEx1.values.xs = m_StepSizes.data();
+	//	confEx1.values.ys = m_AverageEx1.data();
+	//	confEx1.values.count = static_cast<int>(m_StepSizes.size());
+	//	confEx1.scale.min = 0;
+	//	confEx1.scale.max = *std::max_element(m_AverageEx1.begin(), m_AverageEx1.end());
+	//	confEx1.tooltip.show = true;
+	//	confEx1.tooltip.format = "x=%.2f, y=%.2f";
+	//	confEx1.grid_x.show = true;
+	//	confEx1.grid_y.show = true;
+	//	confEx1.frame_size = ImVec2(200, 100);
+	//	confEx1.line_thickness = 2.f;
 
-		ImGui::Plot("Exercise 1", confEx1);
-	}
-	ImGui::End();
+	//	ImGui::Plot("Exercise 1", confEx1);
+	//}
+	//ImGui::End();
 
-	ImGui::Begin("Exercise 2 and 3", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::InputInt("# amount of samples", &m_SampleSizeEx23);
-	// exercise 2
-	if (ImGui::Button("Calculate Exercise 2"))
-	{
-		Exercise2();
-		m_StartEx2 = true;
-	}
-	if (m_StartEx2)
-	{
-		ImGui::PlotConfig confEx2;
-		confEx2.values.xs = m_StepSizes.data();
-		confEx2.values.ys = m_AverageEx2.data();
-		confEx2.values.count = static_cast<int>(m_StepSizes.size());
-		confEx2.scale.min = 0;
-		confEx2.scale.max = *std::max_element(m_AverageEx2.begin(), m_AverageEx2.end());
-		confEx2.tooltip.show = true;
-		confEx2.tooltip.format = "x=%.2f, y=%.2f";
-		confEx2.grid_x.show = true;
-		confEx2.grid_y.show = true;
-		confEx2.frame_size = ImVec2(200, 100);
-		confEx2.line_thickness = 2.f;
+	//ImGui::Begin("Exercise 2 and 3", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+	//ImGui::InputInt("# amount of samples", &m_SampleSizeEx23);
+	//// exercise 2
+	//if (ImGui::Button("Calculate Exercise 2"))
+	//{
+	//	Exercise2();
+	//	m_StartEx2 = true;
+	//}
+	//if (m_StartEx2)
+	//{
+	//	ImGui::PlotConfig confEx2;
+	//	confEx2.values.xs = m_StepSizes.data();
+	//	confEx2.values.ys = m_AverageEx2.data();
+	//	confEx2.values.count = static_cast<int>(m_StepSizes.size());
+	//	confEx2.scale.min = 0;
+	//	confEx2.scale.max = *std::max_element(m_AverageEx2.begin(), m_AverageEx2.end());
+	//	confEx2.tooltip.show = true;
+	//	confEx2.tooltip.format = "x=%.2f, y=%.2f";
+	//	confEx2.grid_x.show = true;
+	//	confEx2.grid_y.show = true;
+	//	confEx2.frame_size = ImVec2(200, 100);
+	//	confEx2.line_thickness = 2.f;
 
-		ImGui::Plot("Exercise 2", confEx2);
-	}
+	//	ImGui::Plot("Exercise 2", confEx2);
+	//}
 
-	// exercise 3
-	if (ImGui::Button("Calculate Exercise 3"))
-	{
-		Exercise3();
-		m_StartEx3 = true;
-	}
-	if (m_StartEx3)
-	{
-		ImGui::PlotConfig confEx3;
-		confEx3.values.xs = m_StepSizes.data();
-		confEx3.values.ys = m_AverageEx3.data();
-		confEx3.values.count = static_cast<int>(m_StepSizes.size());
-		confEx3.scale.min = 0;
-		confEx3.scale.max = *std::max_element(m_AverageEx3.begin(), m_AverageEx3.end());
-		confEx3.tooltip.show = true;
-		confEx3.tooltip.format = "x=%.2f, y=%.2f";
-		confEx3.grid_x.show = true;
-		confEx3.grid_y.show = true;
-		confEx3.frame_size = ImVec2(200, 100);
-		confEx3.line_thickness = 2.f;
+	//// exercise 3
+	//if (ImGui::Button("Calculate Exercise 3"))
+	//{
+	//	Exercise3();
+	//	m_StartEx3 = true;
+	//}
+	//if (m_StartEx3)
+	//{
+	//	ImGui::PlotConfig confEx3;
+	//	confEx3.values.xs = m_StepSizes.data();
+	//	confEx3.values.ys = m_AverageEx3.data();
+	//	confEx3.values.count = static_cast<int>(m_StepSizes.size());
+	//	confEx3.scale.min = 0;
+	//	confEx3.scale.max = *std::max_element(m_AverageEx3.begin(), m_AverageEx3.end());
+	//	confEx3.tooltip.show = true;
+	//	confEx3.tooltip.format = "x=%.2f, y=%.2f";
+	//	confEx3.grid_x.show = true;
+	//	confEx3.grid_y.show = true;
+	//	confEx3.frame_size = ImVec2(200, 100);
+	//	confEx3.line_thickness = 2.f;
 
-		ImGui::Plot("Exercise 2", confEx3);
-	}
+	//	ImGui::Plot("Exercise 2", confEx3);
+	//}
 
-	if (m_StartEx2 && m_StartEx3)
-	{
-		const float* pGraphCombination[] = { m_AverageEx2.data(), m_AverageEx3.data() };
+	//if (m_StartEx2 && m_StartEx3)
+	//{
+	//	const float* pGraphCombination[] = { m_AverageEx2.data(), m_AverageEx3.data() };
 
-		ImGui::PlotConfig confEx23;
-		confEx23.values.xs = m_StepSizes.data();
-		confEx23.values.ys_list = &pGraphCombination[0];
-		confEx23.values.ys_count = 2;
-		confEx23.values.count = static_cast<int>(m_StepSizes.size());
-		confEx23.scale.min = 0;
-		confEx23.scale.max = 10000;
-		confEx23.tooltip.show = true;
-		confEx23.tooltip.format = "x=%.2f, y=%.2f";
-		confEx23.grid_x.show = true;
-		confEx23.grid_y.show = true;
-		confEx23.frame_size = ImVec2(200, 100);
-		confEx23.line_thickness = 2.f;
+	//	ImGui::PlotConfig confEx23;
+	//	confEx23.values.xs = m_StepSizes.data();
+	//	confEx23.values.ys_list = &pGraphCombination[0];
+	//	confEx23.values.ys_count = 2;
+	//	confEx23.values.count = static_cast<int>(m_StepSizes.size());
+	//	confEx23.scale.min = 0;
+	//	confEx23.scale.max = 10000;
+	//	confEx23.tooltip.show = true;
+	//	confEx23.tooltip.format = "x=%.2f, y=%.2f";
+	//	confEx23.grid_x.show = true;
+	//	confEx23.grid_y.show = true;
+	//	confEx23.frame_size = ImVec2(200, 100);
+	//	confEx23.line_thickness = 2.f;
 
-		ImGui::Plot("Exercise 2 and 3 combined", confEx23);
-	}
+	//	ImGui::Plot("Exercise 2 and 3 combined", confEx23);
+	//}
 	ImGui::End();
 }
 
