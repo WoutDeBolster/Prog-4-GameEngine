@@ -17,6 +17,28 @@ public:
 	virtual void play(const sound_id id, const float volume) = 0;
 };
 
+class SdlSoundSystem final : public SoundSystem
+{
+public:
+	SdlSoundSystem() = default;
+	virtual ~SdlSoundSystem() = default;
+
+	SdlSoundSystem(const SdlSoundSystem&) = delete;
+	SdlSoundSystem(SdlSoundSystem&&) = delete;
+	SdlSoundSystem& operator= (const SdlSoundSystem&) = delete;
+	SdlSoundSystem& operator= (const SdlSoundSystem&&) = delete;
+
+	//void play(const sound_id id, const float volume) override
+	//{
+
+	//}
+};
+
+class NullSoundSystem final : public SoundSystem
+{
+	void play(const sound_id, const float) override {}
+};
+
 class ServisLocator final
 {
 public:
@@ -41,27 +63,5 @@ private:
 	static std::shared_ptr<NullSoundSystem> m_Default_ss;
 	static std::shared_ptr<SoundSystem> m_ss_Instance;
 };
-std::shared_ptr<NullSoundSystem>  ServisLocator::m_Default_ss;
+std::shared_ptr<NullSoundSystem> ServisLocator::m_Default_ss;
 std::shared_ptr<SoundSystem> ServisLocator::m_ss_Instance = m_Default_ss;
-
-class SdlSoundSystem final : public SoundSystem
-{
-public:
-	SdlSoundSystem() = default;
-	virtual ~SdlSoundSystem() = default;
-
-	SdlSoundSystem(const SdlSoundSystem&) = delete;
-	SdlSoundSystem(SdlSoundSystem&&) = delete;
-	SdlSoundSystem& operator= (const SdlSoundSystem&) = delete;
-	SdlSoundSystem& operator= (const SdlSoundSystem&&) = delete;
-
-	//void play(const sound_id id, const float volume) override
-	//{
-
-	//}
-};
-
-class NullSoundSystem final : public SoundSystem
-{
-	void play(const sound_id id, const float volume) override {}
-};
