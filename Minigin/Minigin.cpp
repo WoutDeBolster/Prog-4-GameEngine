@@ -15,6 +15,7 @@
 #include "HealthComp.h"
 #include "PointsComp.h"
 #include "SoundSystem.h"
+#include "ImguiComp.h"
 
 #include <chrono>
 //#include <steam_api.h>
@@ -118,88 +119,28 @@ void dae::Minigin::LoadGame() const
 	FPSCompCounter->SetPosition(10, 10);
 	scene.Add(FPSCompCounter);
 
+	// ImguiComp
+	auto ImguiObj = std::make_shared<GameObject>();
+	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
+
+	ImguiObj->addComponent(imgui);
+	//scene.Add(ImguiObj);
+
 	// Player 1
-	// playerComp
-	std::shared_ptr<Achievements> achievements = std::make_shared<Achievements>();
-	auto playerObj = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(playerObj);
-
-	std::shared_ptr<PeterPepperComp> peter = std::make_shared<PeterPepperComp>(playerObj);
-	peter->AddObserver(achievements);
-
-	playerObj->addComponent(peter);
-
-	scene.Add(playerObj);
-
-	// health
-	auto HealthObj = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(HealthObj);
-	std::shared_ptr<HealthComp> health = std::make_shared<HealthComp>(HealthObj, 3);
-	health->AddObserver(achievements);
-	text = std::make_shared<TextComp>(HealthObj, " Lives: " + std::to_string(health->GetHealth()), font2, SDL_Color(0, 255, 0));
-
-	HealthObj->addComponent(Transform);
-	HealthObj->addComponent(health);
-	HealthObj->addComponent(text);
-
-	HealthObj->SetPosition(10, 250);
-	scene.Add(HealthObj);
-
-	// points
-	auto PointsObj = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(PointsObj);
-	std::shared_ptr<PointsComp> points = std::make_shared<PointsComp>(PointsObj, 0);
-	points->AddObserver(achievements);
-	text2 = std::make_shared<TextComp>(PointsObj, " Pionts: " + std::to_string(points->GetPoints()), font2, SDL_Color(0, 255, 0));
-
-	PointsObj->addComponent(Transform);
-	PointsObj->addComponent(points);
-	PointsObj->addComponent(text2);
-
-	PointsObj->SetPosition(10, 300);
-	scene.Add(PointsObj);
+	std::shared_ptr<GameObject> healthObj{ MakeHealthObj(10, 250, 3, font2, SDL_Color(0, 255, 0)) };
+	scene.Add(healthObj);
+	std::shared_ptr<GameObject> pointsObj{ MakePointObj(10, 300, 0, font2, SDL_Color(0, 255, 0)) };
+	scene.Add(pointsObj);
+	std::shared_ptr<GameObject> PlayerObj = MakePlayerObj(healthObj, pointsObj);
+	scene.Add(PlayerObj);
 
 	// Player 2
-	// playerComp
-	std::shared_ptr<Achievements> achievements2 = std::make_shared<Achievements>();
-	auto playerObj2 = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(playerObj2);
-
-	peter = std::make_shared<PeterPepperComp>(playerObj2);
-	peter->AddObserver(achievements2);
-
-	playerObj2->addComponent(Transform);
-	playerObj2->addComponent(peter);
-
-	scene.Add(playerObj);
-
-	// health
-	auto HealthObj2 = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(HealthObj2);
-	std::shared_ptr<HealthComp> health2 = std::make_shared<HealthComp>(HealthObj2, 3);
-	health2->AddObserver(achievements2);
-	text = std::make_shared<TextComp>(HealthObj2, " Lives: " + std::to_string(health2->GetHealth()), font2, SDL_Color(255, 255, 0));
-
-	HealthObj2->addComponent(Transform);
-	HealthObj2->addComponent(health2);
-	HealthObj2->addComponent(text);
-
-	HealthObj2->SetPosition(10, 350);
-	scene.Add(HealthObj2);
-
-	// points
-	auto PointsObj2 = std::make_shared<GameObject>();
-	Transform = std::make_shared<TransformComp>(PointsObj2);
-	std::shared_ptr<PointsComp> points2 = std::make_shared<PointsComp>(PointsObj2, 0);
-	points2->AddObserver(achievements2);
-	text2 = std::make_shared<TextComp>(PointsObj2, " Pionts: " + std::to_string(points2->GetPoints()), font2, SDL_Color(255, 255, 0));
-
-	PointsObj2->addComponent(Transform);
-	PointsObj2->addComponent(points2);
-	PointsObj2->addComponent(text2);
-
-	PointsObj2->SetPosition(10, 400);
-	scene.Add(PointsObj2);
+	std::shared_ptr<GameObject> healthObj2{ MakeHealthObj(10, 350, 3, font2, SDL_Color(255, 255, 0)) };
+	scene.Add(healthObj2);
+	std::shared_ptr<GameObject> pointsObj2{ MakePointObj(10, 400, 0, font2, SDL_Color(255, 255, 0)) };
+	scene.Add(pointsObj2);
+	std::shared_ptr<GameObject> PlayerObj2 = MakePlayerObj(healthObj2, pointsObj2);
+	scene.Add(PlayerObj2);
 
 	// explations
 	// EndGame
@@ -244,10 +185,10 @@ void dae::Minigin::LoadGame() const
 	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new DuckCommand, InputType::keyDown);
 	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new FartCommand, InputType::keyDown);
 	//input.SetButtonCommand(0, XboxController::ControllerButton::RightShoulder, new KillCommand(peter), InputType::keyDown);
-	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Down, new DammageCommand(HealthObj.get()->getComponent<HealthComp>()), InputType::keyDown);
-	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Right, new DammageCommand(HealthObj2.get()->getComponent<HealthComp>()), InputType::keyDown);
-	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Up, new IncreasePointsCommand(PointsObj.get()->getComponent<PointsComp>()), InputType::keyDown);
-	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Left, new IncreasePointsCommand(PointsObj2.get()->getComponent<PointsComp>()), InputType::keyDown);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Down, new DammageCommand(healthObj.get()->getComponent<HealthComp>()), InputType::keyDown);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Right, new DammageCommand(healthObj2.get()->getComponent<HealthComp>()), InputType::keyDown);
+	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Up, new IncreasePointsCommand(pointsObj.get()->getComponent<PointsComp>()), InputType::keyDown);
+	input.SetButtonCommand(1, XboxController::ControllerButton::Dpad_Left, new IncreasePointsCommand(healthObj2.get()->getComponent<PointsComp>()), InputType::keyDown);
 }
 
 void dae::Minigin::Cleanup()
@@ -300,6 +241,55 @@ void dae::Minigin::Run()
 	}
 
 	Cleanup();
+}
+
+std::shared_ptr<dae::GameObject> dae::Minigin::MakeHealthObj(float x, float y, unsigned int health, std::shared_ptr<Font> font, SDL_Color color) const
+{
+	// health
+	std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>();
+	std::shared_ptr<TransformComp> transformC = std::make_shared<TransformComp>(gameObject);
+	std::shared_ptr<HealthComp> healthC = std::make_shared<HealthComp>(gameObject, health);
+	std::shared_ptr<TextComp> textC = std::make_shared<TextComp>(gameObject, " Lives: " + std::to_string(health), font, color);
+
+	gameObject->addComponent(transformC);
+	gameObject->addComponent(healthC);
+	gameObject->addComponent(textC);
+
+	gameObject->SetPosition(x, y);
+
+	return gameObject;
+}
+
+std::shared_ptr<dae::GameObject> dae::Minigin::MakePointObj(float x, float y, int points, std::shared_ptr<Font> font, SDL_Color color) const
+{
+	// Points
+	std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>();
+	std::shared_ptr<TransformComp> transformC = std::make_shared<TransformComp>(gameObject);
+	std::shared_ptr<PointsComp> pointC = std::make_shared<PointsComp>(gameObject, points);
+	std::shared_ptr<TextComp> textC = std::make_shared<TextComp>(gameObject, " Points: " + std::to_string(points), font, color);
+
+	gameObject->addComponent(transformC);
+	gameObject->addComponent(pointC);
+	gameObject->addComponent(textC);
+
+	gameObject->SetPosition(x, y);
+
+	return gameObject;
+}
+
+std::shared_ptr<dae::GameObject> dae::Minigin::MakePlayerObj(std::shared_ptr<GameObject> healthObj, std::shared_ptr<GameObject> PointObj) const
+{
+	// playerComp
+	std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>();
+	std::shared_ptr<Achievements> achievements = std::make_shared<Achievements>();
+	std::shared_ptr<TransformComp> transformC = std::make_shared<TransformComp>(gameObject);
+	std::shared_ptr<PeterPepperComp> peterC = std::make_shared<PeterPepperComp>(gameObject);
+
+	peterC->AddObserver(achievements);
+	gameObject->addComponent(transformC);
+	gameObject->addComponent(peterC);
+
+	return gameObject;
 }
 
 void dae::Minigin::TestSound() const

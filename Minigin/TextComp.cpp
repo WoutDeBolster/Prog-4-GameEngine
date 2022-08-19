@@ -7,7 +7,7 @@
 #include "GameObject.h"
 
 dae::TextComp::TextComp(std::shared_ptr<GameObject> pOwner, const std::string& text,
-	const std::shared_ptr<Font>& Font, const SDL_Color& color)
+	const std::shared_ptr<Font> Font, const SDL_Color& color)
 	: BaseComponent(pOwner)
 	, m_NeedsUpdate(true)
 	, m_Text(text)

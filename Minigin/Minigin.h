@@ -1,17 +1,12 @@
 #pragma once
 struct SDL_Window;
 
-#include <memory>
-#include "SDL_pixels.h"
-#include <string>
-
-
-class GameObject;
-
-
 namespace dae
 {
 	class FPSComp;
+	class GameObject;
+	class Font;
+
 	class Minigin
 	{
 	public:
@@ -26,10 +21,11 @@ namespace dae
 		SDL_Window* m_Window{};
 
 		// object functions
-		GameObject MakeHealthObj(std::shared_ptr<GameObject> gameObject, unsigned int health, SDL_Color color) const;
-		GameObject MakePointObj(std::shared_ptr<GameObject> gameObject, unsigned int points, SDL_Color color) const;
-		GameObject MakePlayerObj(std::shared_ptr<GameObject> gameObject,
-			std::shared_ptr<GameObject> healthObj, std::shared_ptr<GameObject> PointObj) const;
+		std::shared_ptr<GameObject> MakeHealthObj(float x, float y, unsigned int health, std::shared_ptr<Font> font, SDL_Color color) const;
+		std::shared_ptr<GameObject> MakePointObj(float x, float y, int points, std::shared_ptr<Font> font, SDL_Color color) const;
+		std::shared_ptr<GameObject> MakePlayerObj(std::shared_ptr<GameObject> healthObj, std::shared_ptr<GameObject> PointObj) const;
+		std::shared_ptr<GameObject> MakeTextObj(float x, float y, std::string& text, std::shared_ptr<Font> font, SDL_Color& color) const;
+
 		void TestSound() const;
 	};
 }

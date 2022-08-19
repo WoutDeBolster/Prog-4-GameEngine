@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "TextComp.h"
 
-dae::HealthComp::HealthComp(std::shared_ptr<GameObject> pOwner, int health)
+dae::HealthComp::HealthComp(std::shared_ptr<GameObject> pOwner, unsigned int health)
 	:BaseComponent(pOwner)
 	, m_Health{ health }
 {

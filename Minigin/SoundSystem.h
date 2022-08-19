@@ -76,7 +76,10 @@ public:
 	}
 	static void RegisterSoundSystem(std::shared_ptr<SoundSystem> ss)
 	{
-		m_ss_Instance = ss;
+		if (!ss)
+		{
+			m_ss_Instance = ss;
+		}
 	}
 
 private:
