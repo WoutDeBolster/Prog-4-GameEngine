@@ -35,3 +35,7 @@ Release
 *.exe
 *.out
 *.app
+Minigin/Minigin.vcxproj.user
+Minigin/Minigin.vcxproj.filters
+Minigin/Minigin.vcxproj.filters
+Minigin/Minigin.vcxproj

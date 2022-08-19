@@ -18,3 +18,4 @@ namespace dae
 		bool m_NoONeElseDied{ true };
 	};
 }
+

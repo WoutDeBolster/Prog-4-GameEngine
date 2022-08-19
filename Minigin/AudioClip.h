@@ -12,12 +12,12 @@ public:
 	AudioClip& operator= (const AudioClip&) = delete;
 	AudioClip& operator= (const AudioClip&&) = delete;
 
-	void LoadMusic();
+	//void LoadMusic();
 	void LoadSound();
 
 	bool IsLoaded();
 
-	void PlayMusic();
+	//void PlayMusic();
 	void PlaySound();
 
 	void SetVolume(int volume);
