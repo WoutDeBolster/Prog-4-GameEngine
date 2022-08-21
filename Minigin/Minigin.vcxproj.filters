@@ -150,6 +150,9 @@
     <ClInclude Include="ImguiComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -256,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerComp.cpp">
+      <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 #include "MiniginPCH.h"
 #include "AudioClip.h"
-#include "SoundSystem.h"
 
 AudioClip::AudioClip(const std::string& fileName)
 {
@@ -32,7 +31,6 @@ void AudioClip::PlaySound()
 {
 	m_pSound->volume = static_cast<Uint8>(m_Volume);
 	Mix_PlayChannel(-1, m_pSound, 0);
-
 }
 
 void AudioClip::SetVolume(int volume)

@@ -3,6 +3,9 @@
 #include "PeterPepperComp.h"
 #include "HealthComp.h"
 #include "PointsComp.h"
+#include "TransformComp.h"
+#include "TextureComp.h"
+#include "GameObject.h"
 
 namespace dae
 {
@@ -77,5 +80,86 @@ namespace dae
 
 	private:
 		std::weak_ptr<PointsComp> m_Points;
+	};
+
+	// movement
+	class MoveLeftCommand final : public Command
+	{
+	public:
+		MoveLeftCommand(std::shared_ptr<GameObject> object, float fixedTime);
+
+		void Execute() override
+		{
+			glm::vec3 currentPos{ m_ObjC.lock().get()->getComponent<TransformComp>().get()->GetPosition() };
+
+			// pos game obejct
+			currentPos.x -= m_Speed;
+			m_ObjC.lock().get()->getComponent<TransformComp>().get()->SetPosition(currentPos.x, currentPos.y, currentPos.z);
+		}
+		void Undo() override {}
+
+	private:
+		std::weak_ptr<GameObject> m_ObjC;
+		float m_Speed;
+	};
+
+	class MoveRightCommand final : public Command
+	{
+	public:
+		MoveRightCommand(std::shared_ptr<GameObject> object, float speed);
+
+		void Execute() override
+		{
+			glm::vec3 currentPos{ m_ObjC.lock().get()->getComponent<TransformComp>().get()->GetPosition() };
+
+			// pos game obejct
+			currentPos.x += m_Speed;
+			m_ObjC.lock().get()->getComponent<TransformComp>().get()->SetPosition(currentPos.x, currentPos.y, currentPos.z);
+		}
+		void Undo() override {}
+
+	private:
+		std::weak_ptr<GameObject> m_ObjC;
+		float m_Speed;
+	};
+
+	class MoveUpCommand final : public Command
+	{
+	public:
+		MoveUpCommand(std::shared_ptr<GameObject> object, float speed);
+
+		void Execute() override
+		{
+			glm::vec3 currentPos{ m_ObjC.lock().get()->getComponent<TransformComp>().get()->GetPosition() };
+
+			// pos game obejct
+			currentPos.y -= m_Speed;
+			m_ObjC.lock().get()->getComponent<TransformComp>().get()->SetPosition(currentPos.x, currentPos.y, currentPos.z);
+		}
+		void Undo() override {}
+
+	private:
+		std::weak_ptr<GameObject> m_ObjC;
+		float m_Speed;
+	};
+
+	class MoveDownCommand final : public Command
+	{
+	public:
+		MoveDownCommand(std::shared_ptr<GameObject> object, float speed);
+
+		void Execute() override
+		{
+			glm::vec3 currentPos{ m_ObjC.lock().get()->getComponent<TransformComp>().get()->GetPosition() };
+
+			// pos game obejct
+			currentPos.y += m_Speed;
+			m_ObjC.lock().get()->getComponent<TransformComp>().get()->SetPosition(currentPos.x, currentPos.y, currentPos.z);
+		}
+		void Undo() override {}
+
+	private:
+		std::weak_ptr<GameObject> m_ObjC;
+		float m_Speed;
 	};
 }

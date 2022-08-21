@@ -15,7 +15,7 @@
 #include "HealthComp.h"
 #include "PointsComp.h"
 #include "SoundSystem.h"
-#include "ImguiComp.h"
+#include "PlayerComp.h"
 
 #include <chrono>
 //#include <steam_api.h>
@@ -119,13 +119,6 @@ void dae::Minigin::LoadGame() const
 	FPSCompCounter->SetPosition(10, 10);
 	scene.Add(FPSCompCounter);
 
-	// ImguiComp
-	auto ImguiObj = std::make_shared<GameObject>();
-	std::shared_ptr<ImguiComp> imgui = std::make_shared<ImguiComp>(ImguiObj, m_Window);
-
-	ImguiObj->addComponent(imgui);
-	//scene.Add(ImguiObj);
-
 	// Player 1
 	std::shared_ptr<GameObject> healthObj{ MakeHealthObj(10, 250, 3, font2, SDL_Color(0, 255, 0)) };
 	scene.Add(healthObj);
@@ -206,7 +199,8 @@ void dae::Minigin::Run()
 	// tell the resource manager where he can find the game data
 	ResourceManager::GetInstance().Init("../Data/");
 
-	LoadGame();
+	//LoadGame();
+	LoadTankGame();
 
 	{
 		auto lastTime = high_resolution_clock::now();
@@ -292,6 +286,37 @@ std::shared_ptr<dae::GameObject> dae::Minigin::MakePlayerObj(std::shared_ptr<Gam
 	return gameObject;
 }
 
+void dae::Minigin::LoadTankGame()
+{
+	auto& scene = SceneManager::GetInstance().CreateScene("Tron");
+
+	MakePlayerTank();
+	scene.Add(m_PlayerTank);
+
+	// input
+	auto& input = InputManager::GetInstance();
+
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new MoveLeftCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonB, new MoveRightCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new MoveUpCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonA, new MoveDownCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+}
+
+void dae::Minigin::MakePlayerTank()
+{
+	// tank Obj
+	m_PlayerTank = std::make_shared<GameObject>();
+	std::shared_ptr<Achievements> achievements = std::make_shared<Achievements>();
+	std::shared_ptr<TransformComp> transformC = std::make_shared<TransformComp>(m_PlayerTank);
+	std::shared_ptr<TextureComp> textureC = std::make_shared<TextureComp>(m_PlayerTank, "Tanks/PlayerTank.png");
+	std::shared_ptr<PlayerComp> tankC = std::make_shared<PlayerComp>(m_PlayerTank);
+
+	tankC->AddObserver(achievements);
+	m_PlayerTank->addComponent(transformC);
+	m_PlayerTank->addComponent(textureC);
+	m_PlayerTank->addComponent(tankC);
+}
+
 void dae::Minigin::TestSound() const
 {
 #if _DEBUG
@@ -303,6 +328,6 @@ void dae::Minigin::TestSound() const
 	//ServisLocator::RegisterSoundSystem(std::make_shared<LogginSoundSystem>(std::make_shared < SdlSoundSystem>()));
 
 	ServisLocator::GetSoundSystem().InitSoundSystem();
-	ServisLocator::GetSoundSystem().RegisterSound(0, "../Data/05 Jingle #01.mp3");
-	ServisLocator::GetSoundSystem().play(0, 80);
+	ServisLocator::GetSoundSystem().RegisterSound(0, "../Data/05_Jingle_01.mp3");
+	ServisLocator::GetSoundSystem().play(0, 100);
 }

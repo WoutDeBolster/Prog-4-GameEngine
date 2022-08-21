@@ -20,5 +20,6 @@ namespace dae
 		void SetPosition(float x, float y, float z);
 	private:
 		glm::vec3 m_Position;
+		float m_IsDirty{ false };
 	};
 }

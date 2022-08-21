@@ -5,6 +5,8 @@
 #include <vector>
 #include <memory>
 
+
+
 using sound_id = unsigned short;
 class SoundSystem
 {
@@ -19,44 +21,18 @@ public:
 class SdlSoundSystem final : public SoundSystem
 {
 public:
-	SdlSoundSystem() = default;
-	virtual ~SdlSoundSystem()
-	{
-		Mix_CloseAudio();
-	}
+	SdlSoundSystem();
+	virtual ~SdlSoundSystem();
 
-	void AddAudio(std::shared_ptr<AudioClip> audio)
-	{
-		m_AudioClips.push_back(audio);
-	}
+	void AddAudio(std::shared_ptr<AudioClip> audio);
+	void InitSoundSystem();
+	void play(const sound_id id, const int volume) override;
+	void RegisterSound(const sound_id id, const std::string& path);
 
-	void InitSoundSystem()
-	{
-		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-		{
-			std::cout << "coudnt open mixerAudio" << Mix_GetError() << std::endl;
-		}
-		m_AudioClips.resize(50);
-	}
-
-	void play(const sound_id id, const int volume) override
-	{
-		auto audioClip = m_AudioClips[id];
-		if (audioClip->IsLoaded() == false)
-		{
-			audioClip->LoadSound();
-		}
-		audioClip->SetVolume(volume);
-		audioClip->PlaySound();
-	}
-
-	void RegisterSound(const sound_id id, const std::string& path)
-	{
-		auto audioClip = std::make_shared<AudioClip>(path);
-		m_AudioClips[id] = audioClip;
-	};
 private:
 	std::vector<std::shared_ptr<AudioClip>> m_AudioClips;
+	class sdlSoundSystemImpl;
+	sdlSoundSystemImpl* m_pImpl;
 };
 
 class NullSoundSystem final : public SoundSystem
@@ -76,7 +52,7 @@ public:
 	}
 	static void RegisterSoundSystem(std::shared_ptr<SoundSystem> ss)
 	{
-		if (!ss)
+		if (ss)
 		{
 			m_ss_Instance = ss;
 		}
@@ -96,14 +72,17 @@ public:
 	void InitSoundSystem() override
 	{
 		m_ss_real->InitSoundSystem();
+		std::cout << "initing sound system" << std::endl;
 	}
 	void RegisterSound(const sound_id id, const std::string& path) override
 	{
 		m_ss_real->RegisterSound(id, path);
+		std::cout << "registering sound with path: " << path << std::endl;
 	}
 	void play(const sound_id id, const int volume) override
 	{
 		m_ss_real->play(id, volume);
+		std::cout << "playing " << id << " at volume " << volume << std::endl;
 	}
 
 private:
