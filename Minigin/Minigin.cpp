@@ -296,10 +296,12 @@ void dae::Minigin::LoadTankGame()
 	// input
 	auto& input = InputManager::GetInstance();
 
-	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new MoveLeftCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
-	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonB, new MoveRightCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
-	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonY, new MoveUpCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
-	input.SetButtonCommand(0, XboxController::ControllerButton::ButtonA, new MoveDownCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Left, new MoveLeftCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Right, new MoveRightCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Up, new MoveUpCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+	input.SetButtonCommand(0, XboxController::ControllerButton::Dpad_Down, new MoveDownCommand(m_PlayerTank, m_Speed), InputType::keyPressed);
+
+	//input.SetButtonCommand(0, XboxController::ControllerButton::ButtonX, new ShootBulletCommand(m_Bullet), InputType::keyDown);
 }
 
 void dae::Minigin::MakePlayerTank()
@@ -315,6 +317,16 @@ void dae::Minigin::MakePlayerTank()
 	m_PlayerTank->addComponent(transformC);
 	m_PlayerTank->addComponent(textureC);
 	m_PlayerTank->addComponent(tankC);
+}
+
+void dae::Minigin::SpawnBullet()
+{
+	shared_ptr<GameObject> bullet{ std::make_shared<GameObject>() };
+	std::shared_ptr<TransformComp> transformC = std::make_shared<TransformComp>(bullet);
+	std::shared_ptr<TextureComp> textureC = std::make_shared<TextureComp>(bullet, "Tanks/BulletPlayer.png");
+
+	bullet->addComponent(transformC);
+	bullet->addComponent(textureC);
 }
 
 void dae::Minigin::TestSound() const

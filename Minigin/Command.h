@@ -6,6 +6,7 @@
 #include "TransformComp.h"
 #include "TextureComp.h"
 #include "GameObject.h"
+#include "BulletComp.h"
 
 namespace dae
 {
@@ -162,4 +163,20 @@ namespace dae
 		std::weak_ptr<GameObject> m_ObjC;
 		float m_Speed;
 	};
+
+	//class ShootBulletCommand final : public Command
+	//{
+	//public:
+	//	ShootBulletCommand(std::shared_ptr<GameObject> bulletObj);
+
+	//	void Execute() override
+	//	{
+	//		std::shared_ptr<BulletComp> bulletC = std::make_shared<BulletComp>(m_BulletObj, glm::vec2{ 1.f, 0.f });
+	//		m_BulletObj.lock().get()->addComponent(bulletC);
+	//	}
+	//	void Undo() override {}
+
+	//private:
+	//	std::weak_ptr<GameObject> m_BulletObj;
+	//};
 }

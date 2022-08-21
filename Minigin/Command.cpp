@@ -39,3 +39,8 @@ dae::MoveDownCommand::MoveDownCommand(std::shared_ptr<GameObject> object, float 
 	, m_Speed{ speed }
 {
 }
+
+//dae::ShootBulletCommand::ShootBulletCommand(std::shared_ptr<GameObject> bulletObj)
+//	: m_BulletObj{ bulletObj }
+//{
+//}

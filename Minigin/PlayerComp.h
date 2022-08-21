@@ -26,11 +26,15 @@ namespace dae
 		void Update(float fixedTime) override;
 		void Die();
 
+		bool GetSpawnBullet() { return m_SpawnBullet; }
+		void SetSpawnBullet(bool spawnBullet) { m_SpawnBullet = spawnBullet; };
+
 		//	void SetMovement(Movement newMovement);
 		//	Movement GetMovement();
 
-		//private:
-		//	Movement m_Movement;
+	private:
+		//Movement m_Movement;
+		bool m_SpawnBullet{ false };
 	};
 }
 

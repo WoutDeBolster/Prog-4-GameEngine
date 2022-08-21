@@ -153,6 +153,9 @@
     <ClInclude Include="PlayerComp.h">
       <Filter>Compontents</Filter>
     </ClInclude>
+    <ClInclude Include="BulletComp.h">
+      <Filter>Compontents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -261,6 +264,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerComp.cpp">
+      <Filter>Compontents</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletComp.cpp">
       <Filter>Compontents</Filter>
     </ClCompile>
   </ItemGroup>

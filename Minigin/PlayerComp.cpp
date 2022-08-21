@@ -10,6 +10,7 @@ dae::PlayerComp::PlayerComp(std::shared_ptr<GameObject> pOwner)
 
 void dae::PlayerComp::Update(float)
 {
+
 }
 
 void dae::PlayerComp::Die()
